@@ -146,6 +146,7 @@ export default {
 				'slide-up': 'slide-up 0.5s ease-out forwards',
 				'slide-down': 'slide-down 0.5s ease-out forwards',
 				'typing': 'typing 3.5s steps(40, end), blink 0.75s step-end infinite',
+				'blink': 'blink 0.75s step-end infinite',
 				'float': 'float 3s ease-in-out infinite',
 				'pulse': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite'
 			}
