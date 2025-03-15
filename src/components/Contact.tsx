@@ -2,7 +2,8 @@
 import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { cn } from '@/lib/utils';
-import { Github, Linkedin, Mail, FileText, CheckCircle, AlertCircle } from 'lucide-react';
+import { Github, Linkedin, Mail, CheckCircle, AlertCircle } from 'lucide-react';
+import ResumeDownload from './ResumeDownload';
 
 const Contact = () => {
   const { t } = useLanguage();
@@ -38,8 +39,8 @@ const Contact = () => {
       <div className="container max-w-7xl mx-auto">
         <h2 className="section-heading">{t('contact.title')}</h2>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="space-y-6">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="lg:col-span-1 space-y-6">
             <p className="text-lg text-slate dark:text-slate-light">
               {t('contact.description')}
             </p>
@@ -88,24 +89,13 @@ const Contact = () => {
                     <div className="text-sm text-slate dark:text-slate-light">github.com/johndoe</div>
                   </div>
                 </a>
-                
-                <a 
-                  href="#" 
-                  className="flex items-center gap-4 p-3 transition-colors hover:bg-secondary/30 rounded-md"
-                >
-                  <div className="p-3 bg-primary/10 rounded-full">
-                    <FileText size={20} className="text-primary" />
-                  </div>
-                  <div>
-                    <div className="font-medium">{t('contact.cv')}</div>
-                    <div className="text-sm text-slate dark:text-slate-light">PDF • 1.2 MB</div>
-                  </div>
-                </a>
               </div>
             </div>
+            
+            <ResumeDownload className="mt-6" />
           </div>
           
-          <div className="glass p-8 rounded-xl">
+          <div className="lg:col-span-2 glass p-8 rounded-xl">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium mb-2">

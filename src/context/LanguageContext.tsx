@@ -1,4 +1,3 @@
-
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 
 type Language = 'en' | 'fr';
@@ -95,6 +94,8 @@ const translations = {
     'contact.success': 'Message sent successfully!',
     'contact.error': 'Error sending message. Please try again.',
     'contact.cv': 'Download CV',
+    'contact.resume_description': 'Download my detailed resume to learn more about my skills, experience, and education.',
+    'contact.download_cv': 'Download CV',
     
     // Footer
     'footer.rights': 'All rights reserved',
@@ -183,6 +184,8 @@ const translations = {
     'contact.success': 'Message envoyé avec succès !',
     'contact.error': 'Erreur lors de l\'envoi du message. Veuillez réessayer.',
     'contact.cv': 'Télécharger CV',
+    'contact.resume_description': 'Téléchargez mon CV détaillé pour en savoir plus sur mes compétences, mon expérience et ma formation.',
+    'contact.download_cv': 'Télécharger CV',
     
     // Footer
     'footer.rights': 'Tous droits réservés',
