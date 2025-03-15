@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { cn } from '@/lib/utils';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 
 interface TimelineItem {
   id: string;
@@ -60,7 +62,7 @@ const Experience = () => {
       <div className="container max-w-7xl mx-auto">
         <h2 className="section-heading">{t('experience.title')}</h2>
         
-        <div className="flex justify-center mb-12">
+        <div className="flex justify-center mb-10">
           <div className="inline-flex bg-secondary dark:bg-navy-light rounded-xl p-1">
             <button
               className={cn(
@@ -98,62 +100,51 @@ const Experience = () => {
           </div>
         </div>
         
-        <div className="relative">
-          {/* Timeline line */}
-          <div className="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 top-0 bottom-0 w-[2px] bg-border"></div>
-          
-          <div className="space-y-12">
-            {filteredItems.map((item, index) => (
-              <div 
-                key={item.id}
-                className={cn(
-                  "relative flex flex-col md:flex-row",
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                )}
-              >
-                {/* Timeline dot */}
-                <div className="absolute left-0 md:left-1/2 transform -translate-x-1/2 w-5 h-5 rounded-full bg-primary z-10"></div>
-                
-                {/* Content */}
-                <div className={cn(
-                  "w-full md:w-1/2 p-6 md:p-8",
-                  index % 2 === 0 ? "md:pr-16" : "md:pl-16"
-                )}>
-                  <div 
-                    className="glass p-6 rounded-xl card-hover"
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {filteredItems.map((item) => (
+            <Card 
+              key={item.id} 
+              className="card-hover bg-background/50 dark:bg-navy-light/50 backdrop-blur-sm border-primary/10"
+            >
+              <CardHeader className="pb-2">
+                <div className="flex justify-between items-start">
+                  <CardTitle className="text-xl font-bold text-foreground">
+                    {item.title}
+                  </CardTitle>
+                  <Badge 
+                    variant="outline" 
+                    className={cn(
+                      item.type === 'work' 
+                        ? "bg-primary/10 text-primary border-primary/20" 
+                        : "bg-cyan/10 text-cyan border-cyan/20"
+                    )}
                   >
-                    <div className="flex flex-col">
-                      <div className="flex justify-between items-start mb-2">
-                        <h3 className="text-xl font-bold text-foreground">{item.title}</h3>
-                        <span className={cn(
-                          "text-xs font-semibold px-2 py-1 rounded-full",
-                          item.type === 'work' 
-                            ? "bg-primary/10 text-primary" 
-                            : "bg-cyan/10 text-cyan"
-                        )}>
-                          {item.type === 'work' 
-                            ? t('experience.work') 
-                            : t('experience.education')}
-                        </span>
-                      </div>
-                      
-                      {item.organization && (
-                        <div className="text-base font-medium text-slate dark:text-slate-light">{item.organization}</div>
-                      )}
-                      
-                      {item.date && (
-                        <div className="text-sm text-slate dark:text-slate-light/80 mb-4">{item.date}</div>
-                      )}
-                      
-                      <p className="text-slate dark:text-slate-light whitespace-pre-line">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
+                    {item.type === 'work' 
+                      ? t('experience.work') 
+                      : t('experience.education')}
+                  </Badge>
                 </div>
-              </div>
-            ))}
-          </div>
+              </CardHeader>
+              
+              <CardContent>
+                {item.organization && (
+                  <div className="text-base font-medium text-slate dark:text-slate-light mb-1">
+                    {item.organization}
+                  </div>
+                )}
+                
+                {item.date && (
+                  <div className="text-sm text-slate dark:text-slate-light/80 mb-3">
+                    {item.date}
+                  </div>
+                )}
+                
+                <p className="text-slate dark:text-slate-light whitespace-pre-line">
+                  {item.description}
+                </p>
+              </CardContent>
+            </Card>
+          ))}
         </div>
       </div>
     </section>
