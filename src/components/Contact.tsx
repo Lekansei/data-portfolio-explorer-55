@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { cn } from '@/lib/utils';
@@ -12,43 +11,43 @@ const Contact = () => {
   const [message, setMessage] = useState('');
   const [sending, setSending] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
-    
+
     // Simulate form submission
     setTimeout(() => {
       setSending(false);
       setFormStatus('success');
-      
+
       // Reset form
       setName('');
       setEmail('');
       setMessage('');
-      
+
       // Reset status after a while
       setTimeout(() => {
         setFormStatus('idle');
       }, 3000);
     }, 1500);
   };
-  
+
   return (
     <section id="contact" className="section-padding">
       <div className="container max-w-7xl mx-auto">
         <h2 className="section-heading">{t('contact.title')}</h2>
-        
+
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           <div className="lg:col-span-1 space-y-6">
             <p className="text-lg text-slate dark:text-slate-light">
               {t('contact.description')}
             </p>
-            
+
             <div className="glass p-6 rounded-xl">
               <div className="space-y-4">
                 <a 
-                  href="mailto:email@example.com" 
+                  href="mailto:Melchmanu@gmail.com" 
                   className="flex items-center gap-4 p-3 transition-colors hover:bg-secondary/30 rounded-md"
                 >
                   <div className="p-3 bg-primary/10 rounded-full">
@@ -56,12 +55,12 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="font-medium">Email</div>
-                    <div className="text-sm text-slate dark:text-slate-light">email@example.com</div>
+                    <div className="text-sm text-slate dark:text-slate-light">Melchmanu@gmail.com</div>
                   </div>
                 </a>
-                
+
                 <a 
-                  href="https://linkedin.com" 
+                  href="https://linkedin.com/in/manuel-melchiori/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-3 transition-colors hover:bg-secondary/30 rounded-md"
@@ -71,12 +70,12 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="font-medium">LinkedIn</div>
-                    <div className="text-sm text-slate dark:text-slate-light">linkedin.com/in/johndoe</div>
+                    <div className="text-sm text-slate dark:text-slate-light">linkedin.com/in/manuel-melchiori</div>
                   </div>
                 </a>
-                
+
                 <a 
-                  href="https://github.com" 
+                  href="https://github.com/Melchmanu" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-3 transition-colors hover:bg-secondary/30 rounded-md"
@@ -86,15 +85,15 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="font-medium">GitHub</div>
-                    <div className="text-sm text-slate dark:text-slate-light">github.com/johndoe</div>
+                    <div className="text-sm text-slate dark:text-slate-light">github.com/Melchmanu</div>
                   </div>
                 </a>
               </div>
             </div>
-            
+
             <ResumeDownload className="mt-6" />
           </div>
-          
+
           <div className="lg:col-span-2 glass p-8 rounded-xl">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
@@ -110,7 +109,7 @@ const Contact = () => {
                   className="w-full px-4 py-3 rounded-md bg-background dark:bg-navy-light border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="email" className="block text-sm font-medium mb-2">
                   {t('contact.email')}
@@ -124,7 +123,7 @@ const Contact = () => {
                   className="w-full px-4 py-3 rounded-md bg-background dark:bg-navy-light border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
                 />
               </div>
-              
+
               <div>
                 <label htmlFor="message" className="block text-sm font-medium mb-2">
                   {t('contact.message')}
@@ -138,7 +137,7 @@ const Contact = () => {
                   className="w-full px-4 py-3 rounded-md bg-background dark:bg-navy-light border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors resize-none"
                 />
               </div>
-              
+
               <button
                 type="submit"
                 disabled={sending}
@@ -151,14 +150,14 @@ const Contact = () => {
               >
                 {sending ? t('contact.sending') : t('contact.send')}
               </button>
-              
+
               {formStatus === 'success' && (
                 <div className="flex items-center gap-2 text-green-600 dark:text-green-400">
                   <CheckCircle size={16} />
                   <span>{t('contact.success')}</span>
                 </div>
               )}
-              
+
               {formStatus === 'error' && (
                 <div className="flex items-center gap-2 text-red-600 dark:text-red-400">
                   <AlertCircle size={16} />
