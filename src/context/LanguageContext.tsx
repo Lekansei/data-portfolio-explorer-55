@@ -6,6 +6,8 @@ type Language = 'en' | 'fr';
 type LanguageContextType = {
   language: Language;
   setLanguage: (lang: Language) => void;
+  toggleLanguage: () => void;
+  currentLanguage: Language;
   t: (key: string) => string;
 };
 
@@ -193,12 +195,22 @@ const LanguageContext = createContext<LanguageContextType | undefined>(undefined
 export const LanguageProvider = ({ children }: { children: ReactNode }) => {
   const [language, setLanguage] = useState<Language>('fr');
 
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'fr' : 'en');
+  };
+
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations[typeof language]] || key;
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
+    <LanguageContext.Provider value={{ 
+      language, 
+      setLanguage, 
+      toggleLanguage,
+      currentLanguage: language,
+      t 
+    }}>
       {children}
     </LanguageContext.Provider>
   );
