@@ -18,6 +18,11 @@ const translations = {
     'nav.projects': 'Projects',
     'nav.skills': 'Skills',
     'nav.contact': 'Contact',
+    'nav.resume': 'Resume',
+    'nav.toggleLanguage': 'Toggle language',
+    'nav.toggleTheme': 'Toggle theme',
+    'nav.openMenu': 'Open menu',
+    'nav.closeMenu': 'Close menu',
     
     // Hero Section
     'hero.subtitle': 'Data Analyst | Python, SQL, Power BI',
@@ -64,6 +69,9 @@ const translations = {
     'projects.counterfeit.title': 'Counterfeit Detection with Python',
     'projects.counterfeit.description': 'Developed a machine learning model to detect counterfeit bills using classification algorithms.',
     'projects.counterfeit.tools': 'Scikit-Learn, Random Forest, K-Means',
+    'projects.tools': 'Tools',
+    'projects.viewDetails': 'View Details',
+    'projects.viewLess': 'View Less',
     
     // Skills Section
     'skills.title': 'Skills',
@@ -108,6 +116,11 @@ const translations = {
     'nav.projects': 'Projets',
     'nav.skills': 'Compétences',
     'nav.contact': 'Contact',
+    'nav.resume': 'CV',
+    'nav.toggleLanguage': 'Changer de langue',
+    'nav.toggleTheme': 'Changer de thème',
+    'nav.openMenu': 'Ouvrir le menu',
+    'nav.closeMenu': 'Fermer le menu',
     
     // Hero Section
     'hero.subtitle': 'Data Analyst | Python, SQL, Power BI',
@@ -154,6 +167,9 @@ const translations = {
     'projects.counterfeit.title': 'Détection de faux billets avec Python',
     'projects.counterfeit.description': 'Développement d\'un modèle de machine learning pour détecter les faux billets à l\'aide d\'algorithmes de classification.',
     'projects.counterfeit.tools': 'Scikit-Learn, Random Forest, K-Means',
+    'projects.tools': 'Outils',
+    'projects.viewDetails': 'Voir détails',
+    'projects.viewLess': 'Voir moins',
     
     // Skills Section
     'skills.title': 'Compétences',
