@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -7,7 +7,7 @@
     <meta name="description" content="Lovable Generated Project" />
     <meta name="author" content="Lovable" />
     <meta property="og:image" content="./assets/images/og-image.png" />
-    
+
     <!-- Chemins pour les fichiers CSS -->
     <link rel="stylesheet" href="./assets/css/main.css" />
     <noscript>
@@ -15,10 +15,10 @@
     </noscript>
 
     <!-- Script de gestion des redirections pour les applications SPA -->
-    <script type="text/javascript">
+    <script type="module">
       (function(l) {
         if (l.search[1] === '/') {
-          var decoded = l.search.slice(1).split('&').map(function(s) { 
+          var decoded = l.search.slice(1).split('&').map(function(s) {
             return s.replace(/~and~/g, '&');
           }).join('?');
           window.history.replaceState(null, null, l.pathname.slice(0, -1) + decoded + l.hash);
@@ -30,7 +30,7 @@
   <body>
     <!-- Wrapper principal -->
     <div id="wrapper" class="fade-in">
-      
+
       <!-- Introduction -->
       <div id="intro">
         <h1>Data Portfolio Explorer</h1>
@@ -56,8 +56,8 @@
     </div>
 
     <!-- Inclusion des fichiers JavaScript -->
-    <script src="./assets/js/jquery.min.js"></script>
-    <script src="./assets/js/main.js"></script>
-    <script type="module" src="./dist/main.js"></script>
+    <script type="module" src="./assets/js/main.js"></script>
+    <!-- Exemple d'intégration de jQuery via CDN -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   </body>
 </html>
