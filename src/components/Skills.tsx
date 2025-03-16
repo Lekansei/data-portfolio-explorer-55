@@ -7,12 +7,14 @@ interface Skill {
   name: string;
   level: number;
   category: 'technical' | 'soft';
+  description?: string;
 }
 
 const Skills = () => {
   const { t } = useLanguage();
   
   const skills: Skill[] = [
+    // Technical skills
     { name: t('skills.python'), level: 9, category: 'technical' },
     { name: t('skills.sql'), level: 8, category: 'technical' },
     { name: t('skills.powerbi'), level: 7, category: 'technical' },
@@ -21,10 +23,44 @@ const Skills = () => {
     { name: t('skills.pandas'), level: 8, category: 'technical' },
     { name: t('skills.numpy'), level: 7, category: 'technical' },
     { name: t('skills.scikitlearn'), level: 6, category: 'technical' },
-    { name: t('skills.communication'), level: 8, category: 'soft' },
-    { name: t('skills.problemsolving'), level: 9, category: 'soft' },
-    { name: t('skills.teamwork'), level: 7, category: 'soft' },
-    { name: t('skills.adaptability'), level: 8, category: 'soft' },
+    
+    // Soft skills avec descriptions détaillées
+    { 
+      name: "Communication & Vulgarisation", 
+      level: 8, 
+      category: 'soft',
+      description: "Capacité à expliquer des concepts techniques à un public non-tech."
+    },
+    { 
+      name: "Résolution de Problèmes & Esprit Critique", 
+      level: 9, 
+      category: 'soft',
+      description: "Détection des biais, rigueur analytique, optimisation des solutions."
+    },
+    { 
+      name: "Adaptabilité & Apprentissage Rapide", 
+      level: 8, 
+      category: 'soft',
+      description: "Capacité à monter en compétence rapidement selon les besoins du projet."
+    },
+    { 
+      name: "Autonomie & Prise d'Initiative", 
+      level: 7, 
+      category: 'soft',
+      description: "Gestion de projet en solo, prise de décisions data-driven."
+    },
+    { 
+      name: "Gestion de Projet & Travail en Équipe", 
+      level: 7, 
+      category: 'soft',
+      description: "Organisation Agile, travail collaboratif avec d'autres analystes/data engineers."
+    },
+    { 
+      name: "Conformité & Éthique des Données", 
+      level: 8, 
+      category: 'soft',
+      description: "Respect des normes RGPD, responsabilité dans l'utilisation des data."
+    },
   ];
   
   const technicalSkills = skills.filter(skill => skill.category === 'technical');
@@ -35,6 +71,7 @@ const Skills = () => {
       subject: skill.name,
       A: skill.level,
       fullMark: 10,
+      description: skill.description,
     }));
   };
   
@@ -57,6 +94,23 @@ const Skills = () => {
     { name: 'Excel', color: '#217346' },
     { name: 'KNIME', color: '#FFD700' },
   ];
+
+  // Tooltip personnalisé pour afficher les descriptions des soft skills
+  const CustomTooltip = ({ active, payload }: any) => {
+    if (active && payload && payload.length) {
+      const data = payload[0].payload;
+      return (
+        <div className="bg-background/95 dark:bg-navy/95 p-2 rounded-md border border-border shadow-lg">
+          <p className="font-medium">{data.subject}</p>
+          <p className="text-sm">Niveau: {data.A}/10</p>
+          {data.description && (
+            <p className="text-xs text-slate dark:text-slate-light max-w-xs mt-1">{data.description}</p>
+          )}
+        </div>
+      );
+    }
+    return null;
+  };
   
   return (
     <section id="skills" className="section-padding">
@@ -80,7 +134,7 @@ const Skills = () => {
                     fill="#3498db"
                     fillOpacity={0.6}
                   />
-                  <Tooltip />
+                  <Tooltip content={<CustomTooltip />} />
                   <Legend />
                 </RadarChart>
               </ResponsiveContainer>
@@ -103,11 +157,44 @@ const Skills = () => {
                     fill="#2ecc71"
                     fillOpacity={0.6}
                   />
-                  <Tooltip />
+                  <Tooltip content={<CustomTooltip />} />
                   <Legend />
                 </RadarChart>
               </ResponsiveContainer>
             </div>
+          </div>
+        </div>
+        
+        {/* Liste détaillée des soft skills */}
+        <div className="glass p-6 rounded-xl mb-12">
+          <h3 className="text-xl font-bold mb-6">Détail des Soft Skills</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {softSkills.map((skill) => (
+              <div 
+                key={skill.name}
+                className="p-4 rounded-lg bg-background/50 dark:bg-navy-light/50 border border-border hover:shadow-md transition-shadow"
+              >
+                <div className="flex items-center gap-2 mb-2">
+                  <div 
+                    className="w-3 h-3 rounded-full" 
+                    style={{ backgroundColor: '#2ecc71' }}
+                  ></div>
+                  <h4 className="font-medium">{skill.name}</h4>
+                </div>
+                <div className="flex items-center gap-1 mb-2">
+                  <div className="text-sm text-slate dark:text-slate-light">Niveau:</div>
+                  <div className="flex gap-0.5">
+                    {[...Array(10)].map((_, i) => (
+                      <div 
+                        key={i} 
+                        className={`w-2 h-2 rounded-full ${i < skill.level ? 'bg-primary' : 'bg-border'}`}
+                      ></div>
+                    ))}
+                  </div>
+                </div>
+                <p className="text-sm text-slate dark:text-slate-light">{skill.description}</p>
+              </div>
+            ))}
           </div>
         </div>
         

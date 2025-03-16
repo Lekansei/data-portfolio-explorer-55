@@ -14,8 +14,9 @@ export default defineConfig({
   // Base path for GitHub Pages deployment
   base: "/data-portfolio-explorer/",
   
-  // Configure MIME types
+  // Configure server port
   server: {
+    port: 8080,
     fs: {
       // Autorise l'accès au répertoire du projet et à tous les sous-répertoires
       allow: ['.'],
