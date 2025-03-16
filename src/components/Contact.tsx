@@ -83,7 +83,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="font-medium">Email</div>
-                    <div className="text-sm text-slate dark:text-slate-light">melchmanu@gmail.com</div>
+                    <div className="text-sm text-slate dark:text-slate-light truncate">melchmanu@gmail.com</div>
                   </div>
                 </a>
 
@@ -96,9 +96,9 @@ const Contact = () => {
                   <div className="p-3 bg-primary/10 rounded-full">
                     <Linkedin size={20} className="text-primary" />
                   </div>
-                  <div>
+                  <div className="overflow-hidden">
                     <div className="font-medium">LinkedIn</div>
-                    <div className="text-sm text-slate dark:text-slate-light">linkedin.com/in/manuel-melchiori</div>
+                    <div className="text-sm text-slate dark:text-slate-light truncate">Manuel Melchiori</div>
                   </div>
                 </a>
 
@@ -113,7 +113,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="font-medium">GitHub</div>
-                    <div className="text-sm text-slate dark:text-slate-light">github.com/Melchmanu</div>
+                    <div className="text-sm text-slate dark:text-slate-light truncate">Melchmanu</div>
                   </div>
                 </a>
               </div>

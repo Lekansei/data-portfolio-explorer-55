@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 
 const TypewriterText = ({ texts, speed = 100, delay = 1500 }: { texts: string[], speed?: number, delay?: number }) => {
   const [index, setIndex] = useState(0);
@@ -120,12 +121,15 @@ const Hero = () => {
           <div className="lg:col-span-5 flex justify-center lg:justify-end animate-fade-in" style={{ animationDelay: '0.5s' }}>
             <div className="relative">
               <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-primary/10 absolute -top-6 -left-6 animate-pulse"></div>
-              <div className="w-64 h-64 sm:w-80 sm:h-80 overflow-hidden rounded-xl glass">
-                <img 
-                  src={`${import.meta.env.BASE_URL}/images/profile.jpg`}
-                  alt="Manuel Melchiori - Data Analyst" 
-                  className="w-full h-full object-cover"
-                />
+              <div className="w-64 h-64 sm:w-80 sm:h-80 overflow-hidden rounded-full glass">
+                <Avatar className="w-full h-full">
+                  <AvatarImage 
+                    src={`${import.meta.env.BASE_URL}/images/profile.jpg`}
+                    alt="Manuel Melchiori - Data Analyst" 
+                    className="w-full h-full object-cover"
+                  />
+                  <AvatarFallback>MM</AvatarFallback>
+                </Avatar>
               </div>
             </div>
           </div>
