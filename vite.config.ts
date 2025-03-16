@@ -2,10 +2,14 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
-export default defineConfig({
-  plugins: [react()],
+export default defineConfig(({ mode }) => ({
+  plugins: [
+    react(),
+    mode === 'development' && componentTagger(),
+  ].filter(Boolean),
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
@@ -17,6 +21,7 @@ export default defineConfig({
   // Configure server port
   server: {
     port: 8080,
+    host: "::",
     fs: {
       // Autorise l'accès au répertoire du projet et à tous les sous-répertoires
       allow: ['.'],
@@ -38,4 +43,4 @@ export default defineConfig({
     // Generate a 404.html file for GitHub Pages
     emptyOutDir: true,
   },
-});
+}));
