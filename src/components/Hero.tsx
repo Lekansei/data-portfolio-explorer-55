@@ -122,7 +122,7 @@ const Hero = () => {
               <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-primary/10 absolute -top-6 -left-6 animate-pulse"></div>
               <div className="w-64 h-64 sm:w-80 sm:h-80 overflow-hidden rounded-xl glass">
                 <img 
-                  src="/images/profile.jpg" 
+                  src={`${import.meta.env.BASE_URL}/images/profile.jpg`}
                   alt="Manuel Melchiori - Data Analyst" 
                   className="w-full h-full object-cover"
                 />
