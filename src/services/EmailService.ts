@@ -25,12 +25,12 @@ export const sendContactEmail = async (data: EmailData): Promise<{ success: bool
       to_email: "melchmanu@gmail.com"
     };
     
-    // Remplacez ces valeurs par celles de votre compte EmailJS
+    // Using public keys for EmailJS - these are safe to expose in front-end code
     const result = await emailjs.send(
-      "service_id",      // Remplacez par votre Service ID d'EmailJS
-      "template_id",     // Remplacez par votre Template ID d'EmailJS
+      "service_7qwjkrc",      // Service ID from EmailJS
+      "template_p4hsd4p",     // Template ID from EmailJS
       templateParams,
-      "user_id"          // Remplacez par votre User ID d'EmailJS
+      "WjSCu5vVQXJ-6h3OI"     // Public key from EmailJS
     );
     
     if (result.status === 200) {

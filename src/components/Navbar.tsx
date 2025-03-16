@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { Moon, Sun, Menu, X } from 'lucide-react';
+import { Moon, Sun, Menu, X, Globe } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 
 const Navbar = () => {
@@ -70,11 +71,12 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-4">
           <button 
             onClick={toggleLanguage} 
-            className="p-2 rounded-full hover:bg-secondary/80 transition-colors"
+            className="flex items-center gap-1 p-2 rounded-full hover:bg-secondary/80 transition-colors"
             aria-label={t('nav.toggleLanguage')}
           >
+            <Globe size={16} className="mr-1" />
             <span className="font-medium text-sm">
-              {currentLanguage === 'en' ? 'EN' : 'ES'}
+              {currentLanguage === 'en' ? 'EN' : 'FR'}
             </span>
           </button>
           
@@ -131,11 +133,12 @@ const Navbar = () => {
             
             <button 
               onClick={toggleLanguage} 
-              className="mt-6 p-2 rounded-full hover:bg-secondary/80 transition-colors"
+              className="mt-6 flex items-center gap-2 p-2 rounded-full hover:bg-secondary/80 transition-colors"
               aria-label={t('nav.toggleLanguage')}
             >
+              <Globe size={20} className="text-primary" />
               <span className="font-medium">
-                {currentLanguage === 'en' ? 'English' : 'Español'}
+                {currentLanguage === 'en' ? 'English (EN)' : 'Français (FR)'}
               </span>
             </button>
             
