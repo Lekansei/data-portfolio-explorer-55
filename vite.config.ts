@@ -16,7 +16,7 @@ export default defineConfig(({ mode }) => ({
     },
   },
   // Base path for GitHub Pages deployment
-  base: "/data-portfolio-explorer/",
+  base: "./",
   
   // Configure server port
   server: {
@@ -38,6 +38,9 @@ export default defineConfig(({ mode }) => ({
         manualChunks: {
           vendor: ['react', 'react-dom'],
         },
+        assetFileNames: 'assets/[name].[ext]',
+        chunkFileNames: 'assets/[name].[hash].js',
+        entryFileNames: 'assets/[name].[hash].js',
       },
     },
     // Generate a 404.html file for GitHub Pages

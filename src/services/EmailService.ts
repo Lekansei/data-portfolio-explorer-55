@@ -6,7 +6,7 @@
 
 import emailjs from 'emailjs-com';
 
-interface EmailData {
+export interface EmailData {
   name: string;
   email: string;
   message: string;
