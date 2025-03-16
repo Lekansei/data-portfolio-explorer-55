@@ -16,13 +16,13 @@ const Footer = () => {
               <span className="text-primary">DA</span>Portfolio
             </div>
             <div className="text-sm text-slate dark:text-slate-light">
-              &copy; {currentYear} John Doe. {t('footer.rights')}.
+              &copy; {currentYear} Manuel Melchiori. {t('footer.rights')}.
             </div>
           </div>
           
           <div className="flex items-center gap-6">
             <a 
-              href="https://github.com" 
+              href="https://github.com/Melchmanu" 
               target="_blank" 
               rel="noopener noreferrer"
               className="p-2 rounded-full hover:bg-secondary/80 transition-colors"
@@ -32,7 +32,7 @@ const Footer = () => {
             </a>
             
             <a 
-              href="https://linkedin.com" 
+              href="https://www.linkedin.com/in/manuel-melchiori/" 
               target="_blank" 
               rel="noopener noreferrer"
               className="p-2 rounded-full hover:bg-secondary/80 transition-colors"
@@ -42,7 +42,7 @@ const Footer = () => {
             </a>
             
             <a 
-              href="mailto:email@example.com" 
+              href="mailto:melchmanu@gmail.com" 
               className="p-2 rounded-full hover:bg-secondary/80 transition-colors"
               aria-label="Email"
             >

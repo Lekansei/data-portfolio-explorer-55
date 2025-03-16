@@ -12,6 +12,7 @@ interface TimelineItem {
   date: string;
   description: string;
   type: 'work' | 'education';
+  details?: string[];
 }
 
 const Experience = () => {
@@ -25,6 +26,11 @@ const Experience = () => {
       organization: t('experience.cerenn.company'),
       date: t('experience.cerenn.date'),
       description: t('experience.cerenn.description'),
+      details: [
+        t('experience.cerenn.detail1'),
+        t('experience.cerenn.detail2'),
+        t('experience.cerenn.detail3')
+      ],
       type: 'work'
     },
     {
@@ -33,6 +39,18 @@ const Experience = () => {
       organization: t('experience.schneider.company'),
       date: t('experience.schneider.date'),
       description: t('experience.schneider.description'),
+      details: [
+        t('experience.schneider.detail1'),
+        t('experience.schneider.detail2')
+      ],
+      type: 'work'
+    },
+    {
+      id: 'programming',
+      title: t('experience.programming.title'),
+      organization: t('experience.programming.organization'),
+      date: t('experience.programming.date'),
+      description: t('experience.programming.description'),
       type: 'work'
     },
     {
@@ -41,6 +59,10 @@ const Experience = () => {
       organization: t('experience.oc.institution'),
       date: t('experience.oc.date'),
       description: t('experience.oc.description'),
+      details: [
+        t('experience.oc.detail1'),
+        t('experience.oc.detail2')
+      ],
       type: 'education'
     },
     {
@@ -48,7 +70,12 @@ const Experience = () => {
       title: t('experience.certificates.title'),
       organization: '',
       date: '',
-      description: `${t('experience.certificates.sql')}\n${t('experience.certificates.ml')}`,
+      description: t('experience.certificates.description'),
+      details: [
+        t('experience.certificates.sql'),
+        t('experience.certificates.ml'),
+        t('experience.certificates.bi')
+      ],
       type: 'education'
     }
   ];
@@ -139,9 +166,17 @@ const Experience = () => {
                   </div>
                 )}
                 
-                <p className="text-slate dark:text-slate-light whitespace-pre-line">
+                <p className="text-slate dark:text-slate-light whitespace-pre-line mb-4">
                   {item.description}
                 </p>
+                
+                {item.details && item.details.length > 0 && (
+                  <ul className="list-disc pl-5 space-y-1 text-slate dark:text-slate-light">
+                    {item.details.map((detail, index) => (
+                      <li key={index}>{detail}</li>
+                    ))}
+                  </ul>
+                )}
               </CardContent>
             </Card>
           ))}

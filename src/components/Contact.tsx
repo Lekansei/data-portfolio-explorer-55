@@ -1,36 +1,64 @@
+
 import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { cn } from '@/lib/utils';
 import { Github, Linkedin, Mail, CheckCircle, AlertCircle } from 'lucide-react';
+import { sendContactEmail } from '@/services/EmailService';
 import ResumeDownload from './ResumeDownload';
+import { useToast } from '@/components/ui/use-toast';
 
 const Contact = () => {
   const { t } = useLanguage();
+  const { toast } = useToast();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
   const [sending, setSending] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
+    setFormStatus('idle');
 
-    // Simulate form submission
-    setTimeout(() => {
+    try {
+      const result = await sendContactEmail({ name, email, message });
+
+      if (result.success) {
+        setFormStatus('success');
+        toast({
+          title: t('contact.success'),
+          description: t('contact.successDetail'),
+          variant: "default",
+        });
+        
+        // Reset form
+        setName('');
+        setEmail('');
+        setMessage('');
+      } else {
+        setFormStatus('error');
+        toast({
+          title: t('contact.error'),
+          description: result.message,
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      setFormStatus('error');
+      toast({
+        title: t('contact.error'),
+        description: t('contact.errorDetail'),
+        variant: "destructive",
+      });
+    } finally {
       setSending(false);
-      setFormStatus('success');
-
-      // Reset form
-      setName('');
-      setEmail('');
-      setMessage('');
-
+      
       // Reset status after a while
       setTimeout(() => {
         setFormStatus('idle');
-      }, 3000);
-    }, 1500);
+      }, 5000);
+    }
   };
 
   return (
@@ -47,7 +75,7 @@ const Contact = () => {
             <div className="glass p-6 rounded-xl">
               <div className="space-y-4">
                 <a 
-                  href="mailto:Melchmanu@gmail.com" 
+                  href="mailto:melchmanu@gmail.com" 
                   className="flex items-center gap-4 p-3 transition-colors hover:bg-secondary/30 rounded-md"
                 >
                   <div className="p-3 bg-primary/10 rounded-full">
@@ -55,12 +83,12 @@ const Contact = () => {
                   </div>
                   <div>
                     <div className="font-medium">Email</div>
-                    <div className="text-sm text-slate dark:text-slate-light">Melchmanu@gmail.com</div>
+                    <div className="text-sm text-slate dark:text-slate-light">melchmanu@gmail.com</div>
                   </div>
                 </a>
 
                 <a 
-                  href="https://linkedin.com/in/manuel-melchiori/" 
+                  href="https://www.linkedin.com/in/manuel-melchiori/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 p-3 transition-colors hover:bg-secondary/30 rounded-md"

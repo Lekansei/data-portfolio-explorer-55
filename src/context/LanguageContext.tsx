@@ -1,3 +1,4 @@
+
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 
 type Language = 'en' | 'fr';
@@ -26,7 +27,7 @@ const translations = {
     
     // Hero Section
     'hero.subtitle': 'Data Analyst | Python, SQL, Power BI',
-    'hero.description': 'Passionate about data analysis and automation, I help businesses transform their data into strategic decisions.',
+    'hero.description': 'Passionate about data analysis and automation, with 13 years of programming experience. I help businesses transform their data into strategic decisions.',
     'hero.cta': 'Get in touch',
     'hero.scroll': 'Scroll down',
     
@@ -37,18 +38,31 @@ const translations = {
     'experience.cerenn.title': 'Data Analyst',
     'experience.cerenn.company': 'Cerenn Industrie',
     'experience.cerenn.date': '2011 - Present',
-    'experience.cerenn.description': 'Automation and management of industrial databases, data cleaning and structuring, advanced reporting via Power BI.',
+    'experience.cerenn.description': 'Automation and management of industrial databases, with a focus on creating efficient data pipelines and implementing advanced analytics solutions.',
+    'experience.cerenn.detail1': 'Development of data cleaning and structuring processes for industrial datasets',
+    'experience.cerenn.detail2': 'Creation of comprehensive reporting dashboards via Power BI',
+    'experience.cerenn.detail3': 'Implementation of predictive maintenance algorithms to reduce equipment downtime',
     'experience.schneider.title': 'Data Analyst Intern',
     'experience.schneider.company': 'Schneider Electric',
     'experience.schneider.date': 'Internship',
-    'experience.schneider.description': 'Optimization of a production system, analysis and modeling of industrial data.',
+    'experience.schneider.description': 'Optimization of production systems through data-driven insights and process improvements.',
+    'experience.schneider.detail1': 'Analysis and modeling of industrial data to identify inefficiencies',
+    'experience.schneider.detail2': 'Development of SQL queries and Python scripts for automated reporting',
+    'experience.programming.title': 'Programming Experience',
+    'experience.programming.organization': 'Various Projects',
+    'experience.programming.date': '2011 - Present',
+    'experience.programming.description': '13 years of programming experience across multiple languages and platforms, with a specialization in data analysis tools and techniques.',
     'experience.oc.title': 'Data Analyst Certification',
     'experience.oc.institution': 'OpenClassrooms',
     'experience.oc.date': '2024-2025',
-    'experience.oc.description': 'Advanced SQL, Data Visualization with Power BI and Tableau, Machine Learning and Modeling.',
+    'experience.oc.description': 'Professional certification in Data Analysis covering a wide range of data science concepts and tools.',
+    'experience.oc.detail1': 'Advanced SQL, Data Visualization with Power BI and Tableau',
+    'experience.oc.detail2': 'Machine Learning fundamentals and Statistical Modeling',
     'experience.certificates.title': 'Additional Certifications',
+    'experience.certificates.description': 'Ongoing professional development through specialized certifications in data analysis tools and techniques.',
     'experience.certificates.sql': 'Advanced SQL Certificate (PostgreSQL, MySQL)',
     'experience.certificates.ml': 'Machine Learning with Python Certificate',
+    'experience.certificates.bi': 'Business Intelligence & Data Visualization Certificate',
     
     // Projects Section
     'projects.title': 'Projects',
@@ -124,7 +138,7 @@ const translations = {
     
     // Hero Section
     'hero.subtitle': 'Data Analyst | Python, SQL, Power BI',
-    'hero.description': 'Passionné par l\'analyse de données et l\'automatisation, j\'aide les entreprises à transformer leurs données en décisions stratégiques.',
+    'hero.description': 'Passionné par l\'analyse de données et l\'automatisation, avec 13 ans d\'expérience en programmation. J\'aide les entreprises à transformer leurs données en décisions stratégiques.',
     'hero.cta': 'Me contacter',
     'hero.scroll': 'Défiler vers le bas',
     
@@ -135,18 +149,31 @@ const translations = {
     'experience.cerenn.title': 'Data Analyst',
     'experience.cerenn.company': 'Cerenn Industrie',
     'experience.cerenn.date': '2011 - Présent',
-    'experience.cerenn.description': 'Automatisation et gestion des bases de données industrielles, nettoyage et structuration des données, reporting avancé via Power BI.',
+    'experience.cerenn.description': 'Automatisation et gestion des bases de données industrielles, avec un accent sur la création de pipelines de données efficaces et la mise en œuvre de solutions d\'analyse avancées.',
+    'experience.cerenn.detail1': 'Développement de processus de nettoyage et de structuration des données pour les ensembles de données industrielles',
+    'experience.cerenn.detail2': 'Création de tableaux de bord complets via Power BI',
+    'experience.cerenn.detail3': 'Implémentation d\'algorithmes de maintenance prédictive pour réduire les temps d\'arrêt des équipements',
     'experience.schneider.title': 'Stagiaire Data Analyst',
     'experience.schneider.company': 'Schneider Electric',
     'experience.schneider.date': 'Stage',
-    'experience.schneider.description': 'Optimisation d\'un système de production, analyse et modélisation des données industrielles.',
+    'experience.schneider.description': 'Optimisation des systèmes de production grâce à des insights basés sur les données et des améliorations de processus.',
+    'experience.schneider.detail1': 'Analyse et modélisation des données industrielles pour identifier les inefficacités',
+    'experience.schneider.detail2': 'Développement de requêtes SQL et de scripts Python pour le reporting automatisé',
+    'experience.programming.title': 'Expérience en Programmation',
+    'experience.programming.organization': 'Divers Projets',
+    'experience.programming.date': '2011 - Présent',
+    'experience.programming.description': '13 ans d\'expérience en programmation à travers plusieurs langages et plateformes, avec une spécialisation dans les outils et techniques d\'analyse de données.',
     'experience.oc.title': 'Certification Data Analyst',
     'experience.oc.institution': 'OpenClassrooms',
     'experience.oc.date': '2024-2025',
-    'experience.oc.description': 'SQL avancé, Data Visualization avec Power BI et Tableau, Machine Learning et Modélisation.',
+    'experience.oc.description': 'Certification professionnelle en Analyse de Données couvrant un large éventail de concepts et d\'outils de science des données.',
+    'experience.oc.detail1': 'SQL avancé, Data Visualization avec Power BI et Tableau',
+    'experience.oc.detail2': 'Fondamentaux du Machine Learning et Modélisation Statistique',
     'experience.certificates.title': 'Certificats complémentaires',
+    'experience.certificates.description': 'Développement professionnel continu à travers des certifications spécialisées dans les outils et techniques d\'analyse de données.',
     'experience.certificates.sql': 'Certificat SQL avancé (PostgreSQL, MySQL)',
     'experience.certificates.ml': 'Certificat Machine Learning avec Python',
+    'experience.certificates.bi': 'Certificat Business Intelligence & Data Visualization',
     
     // Projects Section
     'projects.title': 'Projets',

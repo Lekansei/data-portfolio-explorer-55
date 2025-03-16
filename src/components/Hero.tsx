@@ -66,7 +66,7 @@ const Hero = () => {
           <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
             <div className="space-y-3 animate-fade-in" style={{ animationDelay: '0.1s' }}>
               <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-                <span className="block">John Doe</span>
+                <span className="block">Manuel Melchiori</span>
                 <span className="text-primary block mt-2">{t('hero.subtitle')}</span>
               </h1>
               
@@ -87,7 +87,7 @@ const Hero = () => {
               
               <div className="flex items-center space-x-4">
                 <a 
-                  href="https://github.com" 
+                  href="https://github.com/Melchmanu" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="p-3 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
@@ -97,7 +97,7 @@ const Hero = () => {
                 </a>
                 
                 <a 
-                  href="https://linkedin.com" 
+                  href="https://www.linkedin.com/in/manuel-melchiori/" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="p-3 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
@@ -107,7 +107,7 @@ const Hero = () => {
                 </a>
                 
                 <a 
-                  href="mailto:email@example.com" 
+                  href="mailto:melchmanu@gmail.com" 
                   className="p-3 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"
                   aria-label="Email"
                 >
@@ -122,8 +122,8 @@ const Hero = () => {
               <div className="w-64 h-64 sm:w-80 sm:h-80 rounded-full bg-primary/10 absolute -top-6 -left-6 animate-pulse"></div>
               <div className="w-64 h-64 sm:w-80 sm:h-80 overflow-hidden rounded-xl glass">
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=774&q=80" 
-                  alt="John Doe - Data Analyst" 
+                  src="/images/profile.jpg" 
+                  alt="Manuel Melchiori - Data Analyst" 
                   className="w-full h-full object-cover"
                 />
               </div>
