@@ -1,7 +1,9 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, Tooltip, Legend } from 'recharts';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import { Info } from 'lucide-react';
 
 interface Skill {
   name: string;
@@ -12,17 +14,46 @@ interface Skill {
 
 const Skills = () => {
   const { t } = useLanguage();
+  const [selectedSkillCategory, setSelectedSkillCategory] = useState<'technical' | 'soft' | null>(null);
   
   const skills: Skill[] = [
-    // Technical skills
-    { name: t('skills.python'), level: 9, category: 'technical' },
-    { name: t('skills.sql'), level: 8, category: 'technical' },
-    { name: t('skills.powerbi'), level: 7, category: 'technical' },
-    { name: t('skills.tableau'), level: 6, category: 'technical' },
-    { name: t('skills.ml'), level: 6, category: 'technical' },
-    { name: t('skills.pandas'), level: 8, category: 'technical' },
-    { name: t('skills.numpy'), level: 7, category: 'technical' },
-    { name: t('skills.scikitlearn'), level: 6, category: 'technical' },
+    // Technical skills avec descriptions détaillées
+    { 
+      name: "SQL & Bases de Données", 
+      level: 9, 
+      category: 'technical',
+      description: "Requêtes avancées, optimisation, gestion de bases relationnelles, indexation, normalisation, CTE, fonctions fenêtres."
+    },
+    { 
+      name: "Python pour l'Analyse & Modélisation", 
+      level: 8, 
+      category: 'technical',
+      description: "Pandas, NumPy, manipulation et nettoyage de données, feature engineering, pipelines de modélisation."
+    },
+    { 
+      name: "Data Visualization & Reporting", 
+      level: 8, 
+      category: 'technical',
+      description: "Power BI (DAX, relations complexes), Tableau, Matplotlib, Seaborn."
+    },
+    { 
+      name: "Machine Learning & Data Science", 
+      level: 7, 
+      category: 'technical',
+      description: "Supervised/Unsupervised Learning (K-Means, Random Forest, Gradient Boosting), évaluation de modèles (F1 Score, Matrice de Confusion, SHAP values)."
+    },
+    { 
+      name: "Automatisation & Workflow Data", 
+      level: 8, 
+      category: 'technical',
+      description: "KNIME, automatisation de rapports, web scraping, API, automatisation Python."
+    },
+    { 
+      name: "Conformité & Gestion des Données Sensibles", 
+      level: 9, 
+      category: 'technical',
+      description: "Anonymisation, RGPD, gestion des accès aux données, reporting et audit de données."
+    },
     
     // Soft skills avec descriptions détaillées
     { 
@@ -68,7 +99,8 @@ const Skills = () => {
   
   const formatSkillsForRadar = (skills: Skill[]) => {
     return skills.map(skill => ({
-      subject: skill.name,
+      subject: skill.name.length > 15 ? skill.name.substring(0, 15) + '...' : skill.name,
+      fullName: skill.name,
       A: skill.level,
       fullMark: 10,
       description: skill.description,
@@ -95,13 +127,13 @@ const Skills = () => {
     { name: 'KNIME', color: '#FFD700' },
   ];
 
-  // Tooltip personnalisé pour afficher les descriptions des soft skills
+  // Tooltip personnalisé
   const CustomTooltip = ({ active, payload }: any) => {
     if (active && payload && payload.length) {
       const data = payload[0].payload;
       return (
         <div className="bg-background/95 dark:bg-navy/95 p-2 rounded-md border border-border shadow-lg">
-          <p className="font-medium">{data.subject}</p>
+          <p className="font-medium">{data.fullName || data.subject}</p>
           <p className="text-sm">Niveau: {data.A}/10</p>
           {data.description && (
             <p className="text-xs text-slate dark:text-slate-light max-w-xs mt-1">{data.description}</p>
@@ -112,6 +144,54 @@ const Skills = () => {
     return null;
   };
   
+  // Composant pour afficher les détails des compétences
+  const SkillsDetailDialog = ({ category }: { category: 'technical' | 'soft' }) => {
+    const skillsList = category === 'technical' ? technicalSkills : softSkills;
+    const title = category === 'technical' ? "Compétences Techniques" : "Soft Skills";
+    
+    return (
+      <Dialog>
+        <DialogTrigger asChild>
+          <button className="text-primary flex items-center gap-1 text-sm font-medium hover:underline">
+            <Info size={16} />
+            <span>Voir détails</span>
+          </button>
+        </DialogTrigger>
+        <DialogContent className="max-w-4xl max-h-[80vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="text-xl">{title}</DialogTitle>
+            <DialogDescription>
+              Détail de mes compétences {category === 'technical' ? 'techniques' : 'interpersonnelles'}
+            </DialogDescription>
+          </DialogHeader>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+            {skillsList.map((skill) => (
+              <div 
+                key={skill.name}
+                className="p-4 rounded-lg bg-background/50 dark:bg-navy-light/50 border border-border hover:shadow-md transition-shadow"
+              >
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <h4 className="font-medium text-lg">{skill.name}</h4>
+                  <div className="flex items-center gap-1">
+                    <span className="text-sm font-medium">{skill.level}/10</span>
+                  </div>
+                </div>
+                <div className="w-full bg-border h-1 mb-3 rounded-full overflow-hidden">
+                  <div 
+                    className={`h-full ${category === 'technical' ? 'bg-primary' : 'bg-green-500'}`}
+                    style={{ width: `${(skill.level / 10) * 100}%` }}
+                  ></div>
+                </div>
+                <p className="text-sm text-slate dark:text-slate-light">{skill.description}</p>
+              </div>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
+    );
+  };
+  
   return (
     <section id="skills" className="section-padding">
       <div className="container max-w-7xl mx-auto">
@@ -120,7 +200,10 @@ const Skills = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
           {/* Technical Skills */}
           <div className="glass p-6 rounded-xl">
-            <h3 className="text-xl font-bold mb-6">{t('skills.hard')}</h3>
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-bold">{t('skills.hard')}</h3>
+              <SkillsDetailDialog category="technical" />
+            </div>
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <RadarChart outerRadius={90} data={technicalRadarData}>
@@ -143,7 +226,10 @@ const Skills = () => {
           
           {/* Soft Skills */}
           <div className="glass p-6 rounded-xl">
-            <h3 className="text-xl font-bold mb-6">{t('skills.soft')}</h3>
+            <div className="flex justify-between items-center mb-6">
+              <h3 className="text-xl font-bold">{t('skills.soft')}</h3>
+              <SkillsDetailDialog category="soft" />
+            </div>
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <RadarChart outerRadius={90} data={softRadarData}>
@@ -162,39 +248,6 @@ const Skills = () => {
                 </RadarChart>
               </ResponsiveContainer>
             </div>
-          </div>
-        </div>
-        
-        {/* Liste détaillée des soft skills */}
-        <div className="glass p-6 rounded-xl mb-12">
-          <h3 className="text-xl font-bold mb-6">Détail des Soft Skills</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {softSkills.map((skill) => (
-              <div 
-                key={skill.name}
-                className="p-4 rounded-lg bg-background/50 dark:bg-navy-light/50 border border-border hover:shadow-md transition-shadow"
-              >
-                <div className="flex items-center gap-2 mb-2">
-                  <div 
-                    className="w-3 h-3 rounded-full" 
-                    style={{ backgroundColor: '#2ecc71' }}
-                  ></div>
-                  <h4 className="font-medium">{skill.name}</h4>
-                </div>
-                <div className="flex items-center gap-1 mb-2">
-                  <div className="text-sm text-slate dark:text-slate-light">Niveau:</div>
-                  <div className="flex gap-0.5">
-                    {[...Array(10)].map((_, i) => (
-                      <div 
-                        key={i} 
-                        className={`w-2 h-2 rounded-full ${i < skill.level ? 'bg-primary' : 'bg-border'}`}
-                      ></div>
-                    ))}
-                  </div>
-                </div>
-                <p className="text-sm text-slate dark:text-slate-light">{skill.description}</p>
-              </div>
-            ))}
           </div>
         </div>
         
