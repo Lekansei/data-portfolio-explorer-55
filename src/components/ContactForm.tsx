@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { CheckCircle, AlertCircle } from 'lucide-react';
 import { sendContactEmail } from '@/services/EmailService';
 import { useToast } from '@/components/ui/use-toast';
 import { useForm } from 'react-hook-form';
+import { z } from 'zod';
+import { zodResolver } from '@hookform/resolvers/zod';
 
 const ContactForm = () => {
   const { t } = useLanguage();
@@ -15,7 +17,15 @@ const ContactForm = () => {
   const [sending, setSending] = useState(false);
   const [formStatus, setFormStatus] = useState<'idle' | 'success' | 'error'>('idle');
   
+  // Create a schema for form validation
+  const formSchema = z.object({
+    name: z.string().min(2, { message: t('contact.nameError') }),
+    email: z.string().email({ message: t('contact.emailError') }),
+    message: z.string().min(5, { message: t('contact.messageError') })
+  });
+
   const form = useForm({
+    resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
       email: '',
@@ -23,7 +33,7 @@ const ContactForm = () => {
     }
   });
 
-  const handleSubmit = async (data: { name: string; email: string; message: string }) => {
+  const handleSubmit = async (data: z.infer<typeof formSchema>) => {
     setSending(true);
     setFormStatus('idle');
 
@@ -69,46 +79,67 @@ const ContactForm = () => {
     <div className="glass p-8 rounded-xl">
       <Form {...form}>
         <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-6">
-          <FormItem>
-            <FormLabel htmlFor="name" className="block text-sm font-medium mb-2">
-              {t('contact.name')}
-            </FormLabel>
-            <FormControl>
-              <Input
-                id="name"
-                {...form.register('name', { required: true })}
-                className="w-full px-4 py-3 rounded-md bg-background dark:bg-navy-light border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-              />
-            </FormControl>
-          </FormItem>
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel htmlFor="name" className="block text-sm font-medium mb-2">
+                  {t('contact.name')}
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    id="name"
+                    {...field}
+                    className="w-full px-4 py-3 rounded-md bg-background dark:bg-navy-light border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-          <FormItem>
-            <FormLabel htmlFor="email" className="block text-sm font-medium mb-2">
-              {t('contact.email')}
-            </FormLabel>
-            <FormControl>
-              <Input
-                id="email"
-                type="email"
-                {...form.register('email', { required: true })}
-                className="w-full px-4 py-3 rounded-md bg-background dark:bg-navy-light border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-              />
-            </FormControl>
-          </FormItem>
+          <FormField
+            control={form.control}
+            name="email"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel htmlFor="email" className="block text-sm font-medium mb-2">
+                  {t('contact.email')}
+                </FormLabel>
+                <FormControl>
+                  <Input
+                    id="email"
+                    type="email"
+                    {...field}
+                    className="w-full px-4 py-3 rounded-md bg-background dark:bg-navy-light border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
-          <FormItem>
-            <FormLabel htmlFor="message" className="block text-sm font-medium mb-2">
-              {t('contact.message')}
-            </FormLabel>
-            <FormControl>
-              <Textarea
-                id="message"
-                rows={5}
-                {...form.register('message', { required: true })}
-                className="w-full px-4 py-3 rounded-md bg-background dark:bg-navy-light border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors resize-none"
-              />
-            </FormControl>
-          </FormItem>
+          <FormField
+            control={form.control}
+            name="message"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel htmlFor="message" className="block text-sm font-medium mb-2">
+                  {t('contact.message')}
+                </FormLabel>
+                <FormControl>
+                  <Textarea
+                    id="message"
+                    rows={5}
+                    {...field}
+                    className="w-full px-4 py-3 rounded-md bg-background dark:bg-navy-light border border-border focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary transition-colors resize-none"
+                  />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
 
           <button
             type="submit"

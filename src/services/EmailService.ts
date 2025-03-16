@@ -30,7 +30,7 @@ export const sendContactEmail = async (data: EmailData): Promise<{ success: bool
       "service_7qwjkrc",      // Service ID from EmailJS
       "template_p4hsd4p",     // Template ID from EmailJS
       templateParams,
-      "WjSCu5vVQXJ-6h3OI"     // Public key from EmailJS
+      "xMgwa06HtdQmx4wMq"     // Updated Public key from EmailJS
     );
     
     if (result.status === 200) {
