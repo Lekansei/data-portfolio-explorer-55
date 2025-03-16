@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
@@ -10,7 +9,6 @@ const TypewriterText = ({ texts, speed = 100, delay = 1500 }: { texts: string[],
   const [reverse, setReverse] = useState(false);
   const [blink, setBlink] = useState(true);
 
-  // Typewriter effect
   useEffect(() => {
     if (subIndex === texts[index].length + 1 && !reverse) {
       setTimeout(() => setReverse(true), delay);
@@ -30,7 +28,6 @@ const TypewriterText = ({ texts, speed = 100, delay = 1500 }: { texts: string[],
     return () => clearTimeout(timeout);
   }, [subIndex, index, reverse, texts, speed, delay]);
 
-  // Blinking cursor effect
   useEffect(() => {
     const timeout2 = setTimeout(() => {
       setBlink((prev) => !prev);
@@ -124,7 +121,7 @@ const Hero = () => {
               <div className="w-64 h-64 sm:w-80 sm:h-80 overflow-hidden rounded-full glass">
                 <Avatar className="w-full h-full">
                   <AvatarImage 
-                    src={`${import.meta.env.BASE_URL}/images/profile.jpg`}
+                    src="/images/profile.jpg"
                     alt="Manuel Melchiori - Data Analyst" 
                     className="w-full h-full object-cover"
                   />

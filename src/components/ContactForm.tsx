@@ -5,7 +5,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { CheckCircle, AlertCircle } from 'lucide-react';
-import { sendContactEmail } from '@/services/EmailService';
+import { sendContactEmail, EmailData } from '@/services/EmailService';
 import { useToast } from '@/components/ui/use-toast';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
@@ -24,7 +24,7 @@ const ContactForm = () => {
     message: z.string().min(5, { message: t('contact.messageError') })
   });
 
-  const form = useForm({
+  const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: '',
@@ -38,7 +38,14 @@ const ContactForm = () => {
     setFormStatus('idle');
 
     try {
-      const result = await sendContactEmail(data);
+      // Ensure we're passing data as EmailData
+      const emailData: EmailData = {
+        name: data.name,
+        email: data.email,
+        message: data.message
+      };
+      
+      const result = await sendContactEmail(emailData);
 
       if (result.success) {
         setFormStatus('success');

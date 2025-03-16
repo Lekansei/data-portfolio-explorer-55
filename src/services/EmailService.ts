@@ -30,8 +30,10 @@ export const sendContactEmail = async (data: EmailData): Promise<{ success: bool
       "service_7qwjkrc",      // Service ID from EmailJS
       "template_p4hsd4p",     // Template ID from EmailJS
       templateParams,
-      "xMgwa06HtdQmx4wMq"     // Updated Public key from EmailJS
+      "xMgwa06HtdQmx4wMq"     // Public key from EmailJS
     );
+    
+    console.log("EmailJS result:", result);
     
     if (result.status === 200) {
       return {
@@ -39,6 +41,7 @@ export const sendContactEmail = async (data: EmailData): Promise<{ success: bool
         message: "Email envoyé avec succès à melchmanu@gmail.com!"
       };
     } else {
+      console.error("EmailJS error with status:", result.status);
       return {
         success: false,
         message: "Échec de l'envoi de l'email. Veuillez réessayer plus tard."
