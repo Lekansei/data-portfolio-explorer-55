@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
@@ -48,6 +47,7 @@ const TypewriterText = ({ texts, speed = 100, delay = 1500 }: { texts: string[],
 
 const Hero = () => {
   const { t } = useLanguage();
+  const { useState, useEffect } = React;
   
   const specialties = [
     "Data Analyst",
@@ -58,11 +58,10 @@ const Hero = () => {
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
-    const targetElement = document.getElementById(targetId);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
+    if (window.scrollToSection) {
+      window.scrollToSection(targetId);
     } else {
-      console.error(`Target element not found with id: ${targetId}`);
+      console.error("scrollToSection function not available");
     }
   };
 
