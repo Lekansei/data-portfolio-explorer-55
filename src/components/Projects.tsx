@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { cn } from '@/lib/utils';
@@ -21,6 +20,7 @@ interface Project {
   demo?: string;
   categories: string[];
   skills: Skill[];
+  priority?: number;
 }
 
 const Projects = () => {
@@ -28,7 +28,6 @@ const Projects = () => {
   const [activeFilter, setActiveFilter] = useState('all');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   
-  // Define project categories/filters
   const filters = [
     { id: 'all', label: t('projects.filter.all') },
     { id: 'sql', label: t('projects.filter.sql') },
@@ -38,8 +37,7 @@ const Projects = () => {
     { id: 'tableau', label: 'Tableau' },
     { id: 'excel', label: 'Excel' },
   ];
-  
-  // Stock images for projects
+
   const projectImages = {
     dataAnalyst: 'https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
     ecommerce: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
@@ -54,21 +52,22 @@ const Projects = () => {
     market: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
     counterfeit: 'https://images.unsplash.com/photo-1589758438368-0ad531db3366?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2068&q=80',
   };
-  
-  // Define projects with the data provided
+
   const projects: Project[] = [
     {
-      id: 'dataAnalyst',
-      title: 'Prenez en main votre formation de Data Analyst',
-      description: 'Formation sur les bases du métier de Data Analyst et prise en main des outils.',
-      tools: ['Excel', 'Power BI'],
-      image: projectImages.dataAnalyst,
-      github: 'https://github.com/Melchmanu/Prenez-en-main-votre-formation-de-Data-Analyst',
-      categories: ['excel', 'powerbi'],
+      id: 'counterfeit',
+      title: 'Détectez des faux billets avec Python',
+      description: 'Détection de faux billets via Machine Learning avec Gradient Boosting et K-Means.',
+      tools: ['Python', 'Scikit-Learn', 'K-Means', 'Random Forest'],
+      image: projectImages.counterfeit,
+      github: 'https://github.com/Melchmanu/-Fake-Banknote-Detection-with-Python',
+      categories: ['python', 'ml'],
       skills: [
-        { name: 'Excel', value: 60, color: '#217346' },
-        { name: 'Power BI', value: 40, color: '#F2C811' },
-      ]
+        { name: 'Scikit-Learn', value: 40, color: '#f39c12' },
+        { name: 'Random Forest', value: 35, color: '#2ecc71' },
+        { name: 'K-Means', value: 25, color: '#9b59b6' },
+      ],
+      priority: 10
     },
     {
       id: 'ecommerce',
@@ -82,34 +81,8 @@ const Projects = () => {
         { name: 'SQL', value: 40, color: '#3498db' },
         { name: 'Python', value: 35, color: '#2ecc71' },
         { name: 'Pandas', value: 25, color: '#9b59b6' },
-      ]
-    },
-    {
-      id: 'database',
-      title: 'Requêtez une base de données avec SQL',
-      description: 'Requêtes SQL avancées sur une base de données, jointures et optimisation.',
-      tools: ['PostgreSQL', 'SQL'],
-      image: projectImages.database,
-      github: 'https://github.com/Melchmanu/Requ-tez-une-base-de-donn-es-avec-SQL',
-      categories: ['sql'],
-      skills: [
-        { name: 'PostgreSQL', value: 60, color: '#336791' },
-        { name: 'SQL', value: 40, color: '#f39c12' },
-      ]
-    },
-    {
-      id: 'health',
-      title: 'Réalisez une étude de santé publique avec Python',
-      description: 'Analyse de données de santé publique avec Pandas et visualisation.',
-      tools: ['Python', 'Pandas', 'Seaborn'],
-      image: projectImages.health,
-      github: 'https://github.com/Melchmanu/Public-Health-Study-with-Python',
-      categories: ['python'],
-      skills: [
-        { name: 'Python', value: 40, color: '#3776AB' },
-        { name: 'Pandas', value: 35, color: '#150458' },
-        { name: 'Seaborn', value: 25, color: '#5C84A0' },
-      ]
+      ],
+      priority: 9
     },
     {
       id: 'realestate',
@@ -123,7 +96,37 @@ const Projects = () => {
         { name: 'PostgreSQL', value: 40, color: '#336791' },
         { name: 'MySQL', value: 35, color: '#4479A1' },
         { name: 'SQL', value: 25, color: '#f39c12' },
-      ]
+      ],
+      priority: 8
+    },
+    {
+      id: 'database',
+      title: 'Requêtez une base de données avec SQL',
+      description: 'Requêtes SQL avancées sur une base de données, jointures et optimisation.',
+      tools: ['PostgreSQL', 'SQL'],
+      image: projectImages.database,
+      github: 'https://github.com/Melchmanu/Requ-tez-une-base-de-donn-es-avec-SQL',
+      categories: ['sql'],
+      skills: [
+        { name: 'PostgreSQL', value: 60, color: '#336791' },
+        { name: 'SQL', value: 40, color: '#f39c12' },
+      ],
+      priority: 5
+    },
+    {
+      id: 'health',
+      title: 'Réalisez une étude de santé publique avec Python',
+      description: 'Analyse de données de santé publique avec Pandas et visualisation.',
+      tools: ['Python', 'Pandas', 'Seaborn'],
+      image: projectImages.health,
+      github: 'https://github.com/Melchmanu/Public-Health-Study-with-Python',
+      categories: ['python'],
+      skills: [
+        { name: 'Python', value: 40, color: '#3776AB' },
+        { name: 'Pandas', value: 35, color: '#150458' },
+        { name: 'Seaborn', value: 25, color: '#5C84A0' },
+      ],
+      priority: 5
     },
     {
       id: 'retail',
@@ -137,7 +140,8 @@ const Projects = () => {
         { name: 'Python', value: 40, color: '#3776AB' },
         { name: 'Pandas', value: 35, color: '#150458' },
         { name: 'NumPy', value: 25, color: '#013243' },
-      ]
+      ],
+      priority: 5
     },
     {
       id: 'dashboard',
@@ -150,7 +154,8 @@ const Projects = () => {
       skills: [
         { name: 'Power BI', value: 60, color: '#F2C811' },
         { name: 'DAX', value: 40, color: '#F08135' },
-      ]
+      ],
+      priority: 4
     },
     {
       id: 'equality',
@@ -164,7 +169,8 @@ const Projects = () => {
         { name: 'KNIME', value: 30, color: '#e74c3c' },
         { name: 'Tableau', value: 45, color: '#3498db' },
         { name: 'GDPR', value: 25, color: '#2ecc71' },
-      ]
+      ],
+      priority: 4
     },
     {
       id: 'bookstore',
@@ -178,7 +184,8 @@ const Projects = () => {
         { name: 'Python', value: 35, color: '#3776AB' },
         { name: 'Seaborn', value: 35, color: '#5C84A0' },
         { name: 'Matplotlib', value: 30, color: '#11557C' },
-      ]
+      ],
+      priority: 3
     },
     {
       id: 'water',
@@ -191,7 +198,8 @@ const Projects = () => {
       skills: [
         { name: 'Tableau', value: 60, color: '#3498db' },
         { name: 'Data Scraping', value: 40, color: '#f39c12' },
-      ]
+      ],
+      priority: 3
     },
     {
       id: 'market',
@@ -205,28 +213,27 @@ const Projects = () => {
         { name: 'Python', value: 35, color: '#3776AB' },
         { name: 'Scrapy', value: 35, color: '#60A839' },
         { name: 'Pandas', value: 30, color: '#150458' },
-      ]
+      ],
+      priority: 3
     },
     {
-      id: 'counterfeit',
-      title: 'Détectez des faux billets avec Python',
-      description: 'Détection de faux billets via Machine Learning avec Gradient Boosting et K-Means.',
-      tools: ['Python', 'Scikit-Learn', 'K-Means', 'Random Forest'],
-      image: projectImages.counterfeit,
-      github: 'https://github.com/Melchmanu/-Fake-Banknote-Detection-with-Python',
-      categories: ['python', 'ml'],
+      id: 'dataAnalyst',
+      title: 'Prenez en main votre formation de Data Analyst',
+      description: 'Formation sur les bases du métier de Data Analyst et prise en main des outils.',
+      tools: ['Excel', 'Power BI'],
+      image: projectImages.dataAnalyst,
+      github: 'https://github.com/Melchmanu/Prenez-en-main-votre-formation-de-Data-Analyst',
+      categories: ['excel', 'powerbi'],
       skills: [
-        { name: 'Scikit-Learn', value: 40, color: '#f39c12' },
-        { name: 'Random Forest', value: 35, color: '#2ecc71' },
-        { name: 'K-Means', value: 25, color: '#9b59b6' },
-      ]
-    }
+        { name: 'Excel', value: 60, color: '#217346' },
+        { name: 'Power BI', value: 40, color: '#F2C811' },
+      ],
+      priority: 1
+    },
   ];
-  
-  // Add English titles and descriptions if needed
+
   const projectsWithTranslations = projects.map(project => {
     if (currentLanguage === 'en') {
-      // Map French titles to English (simple examples)
       const englishTitles: Record<string, string> = {
         'Prenez en main votre formation de Data Analyst': 'Getting Started with Data Analyst Training',
         'Faites une analyse de ventes pour un e-commerce': 'E-commerce Sales Analysis',
@@ -245,7 +252,6 @@ const Projects = () => {
       return {
         ...project,
         title: englishTitles[project.title] || project.title,
-        // Simple English descriptions based on the French ones
         description: project.description
           .replace('Formation sur les bases', 'Basic training')
           .replace('Analyse des tendances', 'Analysis of trends')
@@ -263,18 +269,18 @@ const Projects = () => {
     }
     return project;
   });
-  
-  // Filter projects based on active filter
+
   const filteredProjects = activeFilter === 'all' 
-    ? projectsWithTranslations 
-    : projectsWithTranslations.filter(project => project.categories.includes(activeFilter));
+    ? projectsWithTranslations.sort((a, b) => (b.priority || 0) - (a.priority || 0)) 
+    : projectsWithTranslations
+        .filter(project => project.categories.includes(activeFilter))
+        .sort((a, b) => (b.priority || 0) - (a.priority || 0));
 
   return (
     <section id="projects" className="section-padding bg-secondary/30 dark:bg-navy-light/20">
       <div className="container max-w-7xl mx-auto">
         <h2 className="section-heading">{t('projects.title')}</h2>
         
-        {/* Filter buttons */}
         <div className="flex flex-wrap justify-center gap-2 mb-12">
           {filters.map(filter => (
             <button

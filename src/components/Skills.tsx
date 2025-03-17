@@ -207,15 +207,18 @@ const Skills = () => {
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <RadarChart outerRadius={90} data={technicalRadarData}>
-                  <PolarGrid />
-                  <PolarAngleAxis dataKey="subject" />
-                  <PolarRadiusAxis angle={30} domain={[0, 10]} />
+                  <PolarGrid stroke="#a3a3a3" strokeDasharray="3 3" />
+                  <PolarAngleAxis dataKey="subject" tick={{ fill: '#525252', fontSize: 12 }} />
+                  <PolarRadiusAxis angle={30} domain={[0, 10]} tick={{ fill: '#525252' }} />
                   <Radar
                     name={t('skills.hard')}
                     dataKey="A"
-                    stroke="#3498db"
-                    fill="#3498db"
+                    stroke="#8B5CF6"
+                    fill="#8B5CF6"
                     fillOpacity={0.6}
+                    strokeWidth={2}
+                    animationDuration={1500}
+                    animationBegin={300}
                   />
                   <Tooltip content={<CustomTooltip />} />
                   <Legend />
@@ -233,15 +236,18 @@ const Skills = () => {
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <RadarChart outerRadius={90} data={softRadarData}>
-                  <PolarGrid />
-                  <PolarAngleAxis dataKey="subject" />
-                  <PolarRadiusAxis angle={30} domain={[0, 10]} />
+                  <PolarGrid stroke="#a3a3a3" strokeDasharray="3 3" />
+                  <PolarAngleAxis dataKey="subject" tick={{ fill: '#525252', fontSize: 12 }} />
+                  <PolarRadiusAxis angle={30} domain={[0, 10]} tick={{ fill: '#525252' }} />
                   <Radar
                     name={t('skills.soft')}
                     dataKey="A"
-                    stroke="#2ecc71"
-                    fill="#2ecc71"
+                    stroke="#0EA5E9"
+                    fill="#0EA5E9"
                     fillOpacity={0.6}
+                    strokeWidth={2}
+                    animationDuration={1500}
+                    animationBegin={300}
                   />
                   <Tooltip content={<CustomTooltip />} />
                   <Legend />
