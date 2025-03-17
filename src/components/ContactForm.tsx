@@ -54,7 +54,7 @@ const ContactForm = () => {
         setFormStatus('success');
         toast({
           title: t('contact.success'),
-          description: t('contact.successDetail'),
+          description: result.message,
           variant: "default",
         });
         

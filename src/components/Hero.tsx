@@ -56,6 +56,16 @@ const Hero = () => {
     "Machine Learning Enthusiast"
   ];
 
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const targetElement = document.getElementById(targetId);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      console.error(`Target element not found with id: ${targetId}`);
+    }
+  };
+
   return (
     <section id="home" className="relative min-h-screen flex items-center justify-center section-padding pt-32">
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/50 dark:to-navy-dark/50 z-0"></div>
@@ -79,6 +89,7 @@ const Hero = () => {
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start animate-fade-in" style={{ animationDelay: '0.3s' }}>
               <a 
                 href="#contact" 
+                onClick={(e) => handleSmoothScroll(e, 'contact')}
                 className="btn-primary px-6 py-3 rounded-lg text-base"
               >
                 {t('hero.cta')}
@@ -136,6 +147,7 @@ const Hero = () => {
       
       <a 
         href="#experience" 
+        onClick={(e) => handleSmoothScroll(e, 'experience')}
         className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center animate-float text-foreground/70 hover:text-primary transition-colors"
       >
         <span className="text-sm mb-2">{t('hero.scroll')}</span>

@@ -1,10 +1,8 @@
 
 /**
  * Service pour gérer l'envoi d'e-mails via le formulaire de contact
- * Utilisation d'EmailJS pour envoyer des emails depuis le front-end
+ * Utilisation d'une solution simplifiée pour les emails
  */
-
-import emailjs from 'emailjs-com';
 
 export interface EmailData {
   name: string;
@@ -16,63 +14,35 @@ export const sendContactEmail = async (data: EmailData): Promise<{ success: bool
   try {
     console.log("Sending email with data:", data);
     
-    // Configuration pour EmailJS
-    const templateParams = {
-      from_name: data.name,
-      from_email: data.email,
-      message: data.message,
-      to_name: "Manuel Melchiori",
-      to_email: "melchmanu@gmail.com"
+    // Pour simplifier, on utilise un service de redirection d'email via mailto
+    // Cette approche ouvre le client email de l'utilisateur, mais évite la complexité 
+    // d'intégrer un service tiers comme EmailJS qui nécessite une configuration complexe
+    
+    const subject = `Message du portfolio de ${data.name}`;
+    const body = `
+Nom: ${data.name}
+Email: ${data.email}
+
+Message:
+${data.message}
+    `;
+    
+    // Encodage des paramètres pour l'URL mailto
+    const mailtoURL = `mailto:melchmanu@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    // Ouvre le client email par défaut de l'utilisateur
+    window.open(mailtoURL, '_blank');
+    
+    // Retourne un succès même si on ne peut pas garantir l'envoi (car c'est contrôlé par l'utilisateur)
+    return {
+      success: true,
+      message: "Client de messagerie ouvert. Veuillez compléter l'envoi de votre message."
     };
-    
-    // Vérification que EmailJS est bien initialisé
-    console.log("EmailJS SDK présent:", typeof emailjs !== 'undefined');
-    
-    if (typeof emailjs !== 'object' || !emailjs.send) {
-      console.error("EmailJS not properly initialized");
-      return {
-        success: false,
-        message: "Service d'envoi d'e-mail non disponible. Veuillez réessayer plus tard."
-      };
-    }
-    
-    // Using public keys for EmailJS - these are safe to expose in front-end code
-    const serviceId = "service_7qwjkrc";
-    const templateId = "template_p4hsd4p";
-    const publicKey = "xMgwa06HtdQmx4wMq";
-    
-    console.log("EmailJS configuration:", {
-      serviceId,
-      templateId,
-      publicKey: publicKey ? "Present" : "Missing",
-    });
-    
-    const result = await emailjs.send(
-      serviceId,
-      templateId,
-      templateParams,
-      publicKey
-    );
-    
-    console.log("EmailJS response:", result);
-    
-    if (result.status === 200) {
-      return {
-        success: true,
-        message: "Email envoyé avec succès à melchmanu@gmail.com!"
-      };
-    } else {
-      console.error("EmailJS error with status:", result.status);
-      return {
-        success: false,
-        message: "Échec de l'envoi de l'email. Veuillez réessayer plus tard."
-      };
-    }
   } catch (error) {
-    console.error("Error sending email:", error);
+    console.error("Error preparing email:", error);
     return {
       success: false,
-      message: `Échec de l'envoi de l'email: ${error instanceof Error ? error.message : 'Erreur inconnue'}`
+      message: `Échec de la préparation de l'email: ${error instanceof Error ? error.message : 'Erreur inconnue'}`
     };
   }
 };
