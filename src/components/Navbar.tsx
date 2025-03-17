@@ -42,6 +42,17 @@ const Navbar = () => {
     }
   }, [isMobileMenuOpen]);
 
+  const handleNavLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetElement = document.querySelector(href);
+    if (targetElement) {
+      targetElement.scrollIntoView({ behavior: 'smooth' });
+      setIsMobileMenuOpen(false);
+    } else {
+      console.error(`Target element not found: ${href}`);
+    }
+  };
+
   return (
     <header 
       className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
@@ -51,7 +62,11 @@ const Navbar = () => {
       }`}
     >
       <div className="container max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <a href="#home" className="text-xl font-bold">
+        <a 
+          href="#home" 
+          onClick={(e) => handleNavLinkClick(e, '#home')}
+          className="text-xl font-bold"
+        >
           <span className="text-primary">DA</span>Portfolio
         </a>
         
@@ -61,6 +76,7 @@ const Navbar = () => {
             <a 
               key={link.href} 
               href={link.href} 
+              onClick={(e) => handleNavLinkClick(e, link.href)}
               className="nav-link"
             >
               {link.label}
@@ -90,6 +106,7 @@ const Navbar = () => {
           
           <a 
             href="#contact" 
+            onClick={(e) => handleNavLinkClick(e, '#contact')}
             className="btn-primary px-4 py-2 rounded-lg text-sm"
           >
             {t('nav.resume')}
@@ -125,7 +142,10 @@ const Navbar = () => {
                 key={link.href} 
                 href={link.href} 
                 className="text-xl py-4 hover:text-primary transition-colors"
-                onClick={() => setIsMobileMenuOpen(false)}
+                onClick={(e) => {
+                  handleNavLinkClick(e, link.href);
+                  setIsMobileMenuOpen(false);
+                }}
               >
                 {link.label}
               </a>
@@ -145,7 +165,10 @@ const Navbar = () => {
             <a 
               href="#contact" 
               className="btn-primary px-6 py-3 rounded-lg text-base mt-6"
-              onClick={() => setIsMobileMenuOpen(false)}
+              onClick={(e) => {
+                handleNavLinkClick(e, '#contact');
+                setIsMobileMenuOpen(false);
+              }}
             >
               {t('nav.resume')}
             </a>

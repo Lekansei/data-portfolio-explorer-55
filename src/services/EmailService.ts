@@ -28,15 +28,33 @@ export const sendContactEmail = async (data: EmailData): Promise<{ success: bool
     // Vérification que EmailJS est bien initialisé
     console.log("EmailJS SDK présent:", typeof emailjs !== 'undefined');
     
+    if (typeof emailjs !== 'object' || !emailjs.send) {
+      console.error("EmailJS not properly initialized");
+      return {
+        success: false,
+        message: "Service d'envoi d'e-mail non disponible. Veuillez réessayer plus tard."
+      };
+    }
+    
     // Using public keys for EmailJS - these are safe to expose in front-end code
+    const serviceId = "service_7qwjkrc";
+    const templateId = "template_p4hsd4p";
+    const publicKey = "xMgwa06HtdQmx4wMq";
+    
+    console.log("EmailJS configuration:", {
+      serviceId,
+      templateId,
+      publicKey: publicKey ? "Present" : "Missing",
+    });
+    
     const result = await emailjs.send(
-      "service_7qwjkrc",      // Service ID from EmailJS
-      "template_p4hsd4p",     // Template ID from EmailJS
+      serviceId,
+      templateId,
       templateParams,
-      "xMgwa06HtdQmx4wMq"     // Public key from EmailJS
+      publicKey
     );
     
-    console.log("EmailJS result:", result);
+    console.log("EmailJS response:", result);
     
     if (result.status === 200) {
       return {
