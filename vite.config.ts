@@ -1,22 +1,20 @@
-
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig({
   plugins: [
     react(),
-    mode === 'development' && componentTagger(),
-  ].filter(Boolean),
+  ],
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
     },
   },
   // Base path for GitHub Pages deployment
-  base: "./",
-  
+  base: "/data-portfolio-explorer-55/", // Remplace par le nom exact de ton dépôt GitHub
+
   // Configure server port
   server: {
     port: 8080,
@@ -26,7 +24,7 @@ export default defineConfig(({ mode }) => ({
       allow: ['.'],
     },
   },
-  
+
   build: {
     // Settings for production build
     outDir: 'dist',
@@ -45,4 +43,4 @@ export default defineConfig(({ mode }) => ({
     // Generate a 404.html file for GitHub Pages
     emptyOutDir: true,
   },
-}));
+});
