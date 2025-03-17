@@ -25,6 +25,9 @@ export const sendContactEmail = async (data: EmailData): Promise<{ success: bool
       to_email: "melchmanu@gmail.com"
     };
     
+    // Vérification que EmailJS est bien initialisé
+    console.log("EmailJS SDK présent:", typeof emailjs !== 'undefined');
+    
     // Using public keys for EmailJS - these are safe to expose in front-end code
     const result = await emailjs.send(
       "service_7qwjkrc",      // Service ID from EmailJS
@@ -51,7 +54,7 @@ export const sendContactEmail = async (data: EmailData): Promise<{ success: bool
     console.error("Error sending email:", error);
     return {
       success: false,
-      message: "Échec de l'envoi de l'email. Veuillez réessayer plus tard."
+      message: `Échec de l'envoi de l'email: ${error instanceof Error ? error.message : 'Erreur inconnue'}`
     };
   }
 };

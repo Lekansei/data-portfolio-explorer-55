@@ -36,6 +36,7 @@ const ContactForm = () => {
   const handleSubmit = async (data: z.infer<typeof formSchema>) => {
     setSending(true);
     setFormStatus('idle');
+    console.log("Form submitted with data:", data);
 
     try {
       // Ensure we're passing data as EmailData
@@ -45,7 +46,9 @@ const ContactForm = () => {
         message: data.message
       };
       
+      console.log("Preparing to send email with data:", emailData);
       const result = await sendContactEmail(emailData);
+      console.log("Email send result:", result);
 
       if (result.success) {
         setFormStatus('success');
@@ -66,10 +69,11 @@ const ContactForm = () => {
         });
       }
     } catch (error) {
+      console.error("Error in form submission:", error);
       setFormStatus('error');
       toast({
         title: t('contact.error'),
-        description: t('contact.errorDetail'),
+        description: error instanceof Error ? error.message : t('contact.errorDetail'),
         variant: "destructive",
       });
     } finally {
