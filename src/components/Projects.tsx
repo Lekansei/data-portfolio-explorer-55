@@ -57,22 +57,6 @@ const Projects = () => {
 
   const projects: Project[] = [
     {
-      id: 'aeroworld',
-      title: 'Aéroworld: Aviation Data Analysis Platform',
-      description: 'Interactive aviation analytics dashboard showing flight patterns, efficiency metrics, and predictive maintenance indicators for airlines.',
-      tools: ['Python', 'Power BI', 'SQL', 'Machine Learning'],
-      image: projectImages.aviation,
-      github: 'https://github.com/Melchmanu/Aeroworld-Aviation-Analytics',
-      categories: ['python', 'powerbi', 'sql', 'ml', 'aviation'],
-      skills: [
-        { name: 'Data Visualization', value: 35, color: '#3498db' },
-        { name: 'Python', value: 25, color: '#2ecc71' },
-        { name: 'SQL', value: 20, color: '#e74c3c' },
-        { name: 'Machine Learning', value: 20, color: '#9b59b6' },
-      ],
-      priority: 12
-    },
-    {
       id: 'counterfeit',
       title: 'Détectez des faux billets avec Python',
       description: 'Détection de faux billets via Machine Learning avec Gradient Boosting et K-Means.',
@@ -116,6 +100,22 @@ const Projects = () => {
         { name: 'SQL', value: 25, color: '#f39c12' },
       ],
       priority: 8
+    },
+    {
+      id: 'aeroworld',
+      title: 'Aéroworld: Aviation Data Analysis Platform',
+      description: 'Interactive aviation analytics dashboard showing flight patterns, efficiency metrics, and predictive maintenance indicators for airlines.',
+      tools: ['Python', 'Power BI', 'SQL', 'Machine Learning'],
+      image: projectImages.aviation,
+      github: 'https://github.com/Melchmanu/Aeroworld-Aviation-Analytics',
+      categories: ['python', 'powerbi', 'sql', 'ml', 'aviation'],
+      skills: [
+        { name: 'Data Visualization', value: 35, color: '#3498db' },
+        { name: 'Python', value: 25, color: '#2ecc71' },
+        { name: 'SQL', value: 20, color: '#e74c3c' },
+        { name: 'Machine Learning', value: 20, color: '#9b59b6' },
+      ],
+      priority: 7
     },
     {
       id: 'database',
@@ -428,3 +428,4 @@ const Projects = () => {
 };
 
 export default Projects;
+

@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
@@ -128,7 +129,7 @@ const Hero = () => {
               <div className="w-64 h-64 sm:w-80 sm:h-80 overflow-hidden rounded-full glass">
                 <Avatar className="w-full h-full">
                   <AvatarImage 
-                    src="/images/profile.jpg"
+                    src="https://github.com/Melchmanu/Portfolio/blob/main/images/profile.jpg?raw=true"
                     alt="Manuel Melchiori - Data Analyst" 
                     className="w-full h-full object-cover"
                   />

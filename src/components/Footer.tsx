@@ -1,21 +1,11 @@
 
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { Github, Linkedin, Mail, Phone, Heart } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone } from 'lucide-react';
 
 const Footer = () => {
   const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
-  
-  const copyToClipboard = (text: string, message: string) => {
-    navigator.clipboard.writeText(text)
-      .then(() => {
-        alert(message);
-      })
-      .catch(err => {
-        console.error('Failed to copy: ', err);
-      });
-  };
   
   return (
     <footer className="bg-secondary/30 dark:bg-navy-light/20 py-12">
@@ -33,7 +23,7 @@ const Footer = () => {
           
           {/* Column 2: Contact */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold mb-3">{t('footer.contact')}</h3>
+            <h3 className="text-lg font-semibold mb-3">Contact</h3>
             
             <div className="space-y-3">
               <a 
@@ -60,7 +50,7 @@ const Footer = () => {
           
           {/* Column 3: Social */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold mb-3">{t('footer.social')}</h3>
+            <h3 className="text-lg font-semibold mb-3">Social</h3>
             
             <div className="flex flex-wrap gap-4">
               <a 
@@ -90,10 +80,7 @@ const Footer = () => {
         
         <div className="mt-10 pt-6 border-t border-secondary/50 text-center text-sm text-slate dark:text-slate-light">
           <div className="flex flex-col sm:flex-row items-center justify-center gap-2">
-            <div>&copy; {currentYear} Manuel Melchiori. {t('footer.rights')}.</div>
-            <div className="flex items-center justify-center gap-1">
-              {t('footer.developed')} <Heart size={14} className="text-red-500 mx-1" /> React + TailwindCSS
-            </div>
+            <div>&copy; {currentYear} Manuel Melchiori. Tous droits réservés.</div>
           </div>
         </div>
       </div>

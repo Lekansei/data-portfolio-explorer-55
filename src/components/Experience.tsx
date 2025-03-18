@@ -22,10 +22,10 @@ const Experience = () => {
   const timelineItems: TimelineItem[] = [
     {
       id: 'cerenn',
-      title: t('experience.cerenn.title'),
+      title: "Stage",
       organization: t('experience.cerenn.company'),
       date: t('experience.cerenn.date'),
-      description: t('experience.cerenn.description'),
+      description: "Amélioration système via programmation sur automates",
       details: [
         t('experience.cerenn.detail1'),
         t('experience.cerenn.detail2'),
@@ -55,10 +55,10 @@ const Experience = () => {
     },
     {
       id: 'oc',
-      title: t('experience.oc.title'),
+      title: "Data Analyst",
       organization: t('experience.oc.institution'),
       date: t('experience.oc.date'),
-      description: t('experience.oc.description'),
+      description: "Certification Data Analyst - RNCP37837 - Niveau 6",
       details: [
         t('experience.oc.detail1'),
         t('experience.oc.detail2')
@@ -72,9 +72,9 @@ const Experience = () => {
       date: '',
       description: t('experience.certificates.description'),
       details: [
-        t('experience.certificates.sql'),
-        t('experience.certificates.ml'),
-        t('experience.certificates.bi')
+        t('experience.certificates.sql') + " (en cours)",
+        t('experience.certificates.ml') + " (en cours)",
+        t('experience.certificates.bi') + " (en cours)"
       ],
       type: 'education'
     }
