@@ -59,13 +59,7 @@ const Hero = () => {
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
-    const element = document.getElementById(targetId);
-    if (element) {
-      window.scrollTo({
-        top: element.offsetTop,
-        behavior: 'smooth'
-      });
-    }
+    window.scrollToSection(targetId);
   };
 
   return (
@@ -135,7 +129,7 @@ const Hero = () => {
               <div className="w-64 h-64 sm:w-80 sm:h-80 overflow-hidden rounded-full glass">
                 <Avatar className="w-full h-full">
                   <AvatarImage 
-                    src="images/profile.jpg"
+                    src="/images/profile.jpg"
                     alt="Manuel Melchiori - Data Analyst" 
                     className="w-full h-full object-cover"
                   />

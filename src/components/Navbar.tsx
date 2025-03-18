@@ -44,13 +44,9 @@ const Navbar = () => {
 
   const handleNavLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
-    const targetElement = document.querySelector(href);
-    if (targetElement) {
-      targetElement.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    } else {
-      console.error(`Target element not found: ${href}`);
-    }
+    const targetId = href.substring(1); // Remove the # from the href
+    window.scrollToSection(targetId);
+    setIsMobileMenuOpen(false);
   };
 
   return (
