@@ -1,25 +1,25 @@
 
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import './index.css';
 
-// Create a function to handle smooth scrolling to sections
-const scrollToSection = (sectionId: string) => {
-  const element = document.getElementById(sectionId);
+// Add smooth scrolling function to window object
+window.scrollToSection = (id: string) => {
+  const element = document.getElementById(id);
   if (element) {
-    element.scrollIntoView({
-      behavior: 'smooth'
-    });
+    element.scrollIntoView({ behavior: 'smooth' });
   }
 };
 
-// Make the function globally available by extending Window interface
 declare global {
   interface Window {
-    scrollToSection: (sectionId: string) => void;
+    scrollToSection: (id: string) => void;
   }
 }
 
-window.scrollToSection = scrollToSection;
-
-createRoot(document.getElementById("root")!).render(<App />);
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+);

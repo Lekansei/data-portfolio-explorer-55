@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
@@ -47,21 +48,23 @@ const TypewriterText = ({ texts, speed = 100, delay = 1500 }: { texts: string[],
 
 const Hero = () => {
   const { t } = useLanguage();
-  const { useState, useEffect } = React;
   
   const specialties = [
     "Data Analyst",
     "Data Visualization",
     "SQL & Python Expert",
-    "Machine Learning Enthusiast"
+    "Machine Learning Enthusiast",
+    "Aviation Analytics Specialist"
   ];
 
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
-    if (window.scrollToSection) {
-      window.scrollToSection(targetId);
-    } else {
-      console.error("scrollToSection function not available");
+    const element = document.getElementById(targetId);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop,
+        behavior: 'smooth'
+      });
     }
   };
 
@@ -132,7 +135,7 @@ const Hero = () => {
               <div className="w-64 h-64 sm:w-80 sm:h-80 overflow-hidden rounded-full glass">
                 <Avatar className="w-full h-full">
                   <AvatarImage 
-                    src="/images/profile.jpg"
+                    src="images/profile.jpg"
                     alt="Manuel Melchiori - Data Analyst" 
                     className="w-full h-full object-cover"
                   />

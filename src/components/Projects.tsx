@@ -36,6 +36,7 @@ const Projects = () => {
     { id: 'ml', label: t('projects.filter.ml') },
     { id: 'tableau', label: 'Tableau' },
     { id: 'excel', label: 'Excel' },
+    { id: 'aviation', label: 'Aviation' },
   ];
 
   const projectImages = {
@@ -51,9 +52,26 @@ const Projects = () => {
     water: 'https://images.unsplash.com/photo-1538300342682-cf57afb97285?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2071&q=80',
     market: 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80',
     counterfeit: 'https://images.unsplash.com/photo-1589758438368-0ad531db3366?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2068&q=80',
+    aviation: 'https://images.unsplash.com/photo-1436491865332-7a61a109cc05?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2074&q=80',
   };
 
   const projects: Project[] = [
+    {
+      id: 'aeroworld',
+      title: 'Aéroworld: Aviation Data Analysis Platform',
+      description: 'Interactive aviation analytics dashboard showing flight patterns, efficiency metrics, and predictive maintenance indicators for airlines.',
+      tools: ['Python', 'Power BI', 'SQL', 'Machine Learning'],
+      image: projectImages.aviation,
+      github: 'https://github.com/Melchmanu/Aeroworld-Aviation-Analytics',
+      categories: ['python', 'powerbi', 'sql', 'ml', 'aviation'],
+      skills: [
+        { name: 'Data Visualization', value: 35, color: '#3498db' },
+        { name: 'Python', value: 25, color: '#2ecc71' },
+        { name: 'SQL', value: 20, color: '#e74c3c' },
+        { name: 'Machine Learning', value: 20, color: '#9b59b6' },
+      ],
+      priority: 12
+    },
     {
       id: 'counterfeit',
       title: 'Détectez des faux billets avec Python',

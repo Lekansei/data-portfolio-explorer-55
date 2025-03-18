@@ -1,69 +1,112 @@
-# Welcome to your Lovable project
 
-## Project info
+# Data Analyst Portfolio - Manuel Melchiori
 
-**URL**: https://lovable.dev/projects/458859c2-8a11-4672-bf7e-66e4bf04684c
+## Project Overview
 
-## How can I edit this code?
+Professional portfolio for Manuel Melchiori, a Data Analyst specializing in Python, SQL, and Power BI, with a focus on Aviation Data Analysis.
 
-There are several ways of editing your application.
+## How to Edit Content
 
-**Use Lovable**
+This portfolio is designed to be easily editable without modifying the main code. All content is stored in JSON files in the `src/dist` directory.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/458859c2-8a11-4672-bf7e-66e4bf04684c) and start prompting.
+### Editing Profile Information
 
-Changes made via Lovable will be committed automatically to this repo.
+To update your profile image:
+1. Place your profile image in the `public/images/` folder
+2. The image is referenced in `src/components/Hero.tsx` with a relative path
 
-**Use your preferred IDE**
+### Editing Experiences
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
+1. Open `src/dist/experiences.json`
+2. Each experience is an object with the following structure:
+```json
+{
+  "id": "unique-id",
+  "title": "Job Title",
+  "company": "Company Name",
+  "period": "Start Year - End Year",
+  "description": "Job description",
+  "skills": ["Skill 1", "Skill 2"]
+}
 ```
 
-**Edit a file directly in GitHub**
+### Editing Projects
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+1. Open `src/dist/projects.json`
+2. Each project is an object with the following structure:
+```json
+{
+  "id": "unique-id",
+  "title": "Project Title",
+  "description": "Project description",
+  "tools": ["Tool 1", "Tool 2"],
+  "image": "image-key",
+  "github": "GitHub repository URL",
+  "categories": ["category1", "category2"],
+  "skills": [
+    { "name": "Skill Name", "value": 40, "color": "#HexColor" }
+  ],
+  "priority": 10
+}
+```
+3. Project images are defined in the `projectImages` object in `src/components/Projects.tsx`
 
-**Use GitHub Codespaces**
+### Editing Skills
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+1. Open `src/dist/skills.json`
+2. Each skill category is an object with the following structure:
+```json
+{
+  "category": "Category Name",
+  "skills": [
+    { "name": "Skill Name", "level": 85 }
+  ]
+}
+```
 
-## What technologies are used for this project?
+## Development
 
-This project is built with .
+1. Clone the repository
+2. Install dependencies with `npm install`
+3. Start the development server with `npm run dev`
+4. Build for production with `npm run build`
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+## Deployment
 
-## How can I deploy this project?
+This project is configured for GitHub Pages deployment. The base path is set in `vite.config.ts`.
 
-Simply open [Lovable](https://lovable.dev/projects/458859c2-8a11-4672-bf7e-66e4bf04684c) and click on Share -> Publish.
+```
 
-## I want to use a custom domain - is that possible?
+6. Now, let's update the index.html file to use relative paths and clean up any issues:
 
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.lovable.dev/tips-tricks/custom-domain/)
+<lov-write file_path="index.html">
+<!DOCTYPE html> 
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manuel Melchiori - Data Analyst Portfolio</title>
+    <meta
+      name="description"
+      content="Portfolio de Manuel Melchiori, Data Analyst spécialisé en Python, SQL et Power BI avec 13 ans d'expérience en programmation."
+    />
+    <meta name="author" content="Manuel Melchiori" />
+    <meta property="og:image" content="images/profile.jpg" />
+    <meta
+      property="og:title"
+      content="Manuel Melchiori - Data Analyst Portfolio"
+    />
+    <meta
+      property="og:description"
+      content="Portfolio de Manuel Melchiori, Data Analyst spécialisé en Python, SQL et Power BI."
+    />
+    <meta name="email" content="melchmanu@gmail.com" />
+  </head>
+
+  <body>
+    <div id="root">Chargement...</div>
+    
+    <!-- Scripts principaux -->
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
