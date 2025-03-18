@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { Github, Linkedin, Mail, ChevronDown } from 'lucide-react';
@@ -93,7 +92,7 @@ const Hero = () => {
               
               <div className="flex items-center space-x-4">
                 <a 
-                  href="https://github.com/Melchmanu" 
+                  href="https://github.com/Lekansei" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="p-3 rounded-full bg-secondary hover:bg-secondary/80 transition-colors"

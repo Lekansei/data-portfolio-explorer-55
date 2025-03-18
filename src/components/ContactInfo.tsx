@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail, Phone } from 'lucide-react';
 import ResumeDownload from './ResumeDownload';
 
 const ContactInfo = () => {
@@ -31,6 +31,21 @@ const ContactInfo = () => {
           </a>
 
           <a 
+            href="tel:+33662361767" 
+            className="flex items-center gap-4 p-3 transition-colors hover:bg-secondary/30 rounded-md group"
+          >
+            <div className="flex-shrink-0 p-3 bg-primary/10 rounded-full">
+              <Phone size={20} className="text-primary" />
+            </div>
+            <div className="min-w-0 flex-1">
+              <div className="font-medium">Téléphone</div>
+              <div className="text-sm text-slate dark:text-slate-light truncate w-full">
+                06 62 36 17 67
+              </div>
+            </div>
+          </a>
+
+          <a 
             href="https://www.linkedin.com/in/manuel-melchiori/" 
             target="_blank" 
             rel="noopener noreferrer"
@@ -48,7 +63,7 @@ const ContactInfo = () => {
           </a>
 
           <a 
-            href="https://github.com/Melchmanu" 
+            href="https://github.com/Lekansei" 
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center gap-4 p-3 transition-colors hover:bg-secondary/30 rounded-md group"
@@ -59,7 +74,7 @@ const ContactInfo = () => {
             <div className="min-w-0 flex-1">
               <div className="font-medium">GitHub</div>
               <div className="text-sm text-slate dark:text-slate-light truncate w-full">
-                Melchmanu
+                Lekansei
               </div>
             </div>
           </a>
