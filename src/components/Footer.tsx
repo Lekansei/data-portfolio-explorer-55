@@ -17,64 +17,25 @@ const Footer = () => {
               <span className="text-primary">Manuel</span> Melchiori
             </div>
             <p className="text-sm text-slate dark:text-slate-light">
-              Data Analyst specialisé en Python, SQL et Power BI avec expertise en analyse de données pour l'aviation.
+              Data Analyst specialisé en Python, SQL et Power BI avec 13 ans d'expérience en programmation.
             </p>
           </div>
           
-          {/* Column 2: Contact */}
+          {/* Column 2: Navigation */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold mb-3">Contact</h3>
-            
-            <div className="space-y-3">
-              <a 
-                href="mailto:melchmanu@gmail.com" 
-                className="flex items-center gap-3 group hover:text-primary transition-colors"
-              >
-                <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <Mail size={18} className="text-primary" />
-                </div>
-                <span>melchmanu@gmail.com</span>
-              </a>
-              
-              <a 
-                href="tel:+33662361767" 
-                className="flex items-center gap-3 group hover:text-primary transition-colors"
-              >
-                <div className="p-2 rounded-full bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                  <Phone size={18} className="text-primary" />
-                </div>
-                <span>06 62 36 17 67</span>
-              </a>
+            <h3 className="text-lg font-semibold mb-3">Navigation</h3>
+            <div className="space-y-2">
+              <a href="#" className="block hover:text-primary transition-colors">Accueil</a>
+              <a href="#experience" className="block hover:text-primary transition-colors">Expérience</a>
+              <a href="#projects" className="block hover:text-primary transition-colors">Projets</a>
+              <a href="#skills" className="block hover:text-primary transition-colors">Compétences</a>
+              <a href="#contact" className="block hover:text-primary transition-colors">Contact</a>
             </div>
           </div>
           
-          {/* Column 3: Social */}
+          {/* Column 3: Empty or future content */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold mb-3">Social</h3>
-            
-            <div className="flex flex-wrap gap-4">
-              <a 
-                href="https://github.com/Lekansei" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-4 py-2 rounded-md bg-secondary/50 hover:bg-secondary/80 transition-colors"
-                aria-label="GitHub"
-              >
-                <Github size={18} />
-                <span>GitHub</span>
-              </a>
-              
-              <a 
-                href="https://www.linkedin.com/in/manuel-melchiori/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-4 py-2 rounded-md bg-secondary/50 hover:bg-secondary/80 transition-colors"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={18} />
-                <span>LinkedIn</span>
-              </a>
-            </div>
+            {/* This column is intentionally left empty for future content or balance */}
           </div>
         </div>
         

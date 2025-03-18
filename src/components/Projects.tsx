@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
 import { cn } from '@/lib/utils';
@@ -103,8 +104,8 @@ const Projects = () => {
     },
     {
       id: 'aeroworld',
-      title: 'Aéroworld: Aviation Data Analysis Platform',
-      description: 'Interactive aviation analytics dashboard showing flight patterns, efficiency metrics, and predictive maintenance indicators for airlines.',
+      title: 'Aéroworld: Plateforme d\'Analyse de Données Aviation',
+      description: 'Tableau de bord interactif d\'analyse aéronautique montrant les tendances de vol, les métriques d\'efficacité et les indicateurs de maintenance prédictive pour les compagnies aériennes.',
       tools: ['Python', 'Power BI', 'SQL', 'Machine Learning'],
       image: projectImages.aviation,
       github: 'https://github.com/Melchmanu/Aeroworld-Aviation-Analytics',
@@ -264,25 +265,31 @@ const Projects = () => {
         'Analysez les ventes d\'une librairie avec Python': 'Bookstore Sales Analysis with Python',
         'Faites une étude sur l\'eau potable': 'Drinking Water Accessibility Study',
         'Produisez une étude de marché avec Python': 'Market Study with Python',
-        'Détectez des faux billets avec Python': 'Counterfeit Detection with Python'
+        'Détectez des faux billets avec Python': 'Counterfeit Detection with Python',
+        'Aéroworld: Plateforme d\'Analyse de Données Aviation': 'Aeroworld: Aviation Data Analysis Platform'
+      };
+      
+      const englishDescriptions: Record<string, string> = {
+        'Tableau de bord interactif d\'analyse aéronautique montrant les tendances de vol, les métriques d\'efficacité et les indicateurs de maintenance prédictive pour les compagnies aériennes.': 'Interactive aviation analytics dashboard showing flight patterns, efficiency metrics, and predictive maintenance indicators for airlines.'
       };
       
       return {
         ...project,
         title: englishTitles[project.title] || project.title,
-        description: project.description
-          .replace('Formation sur les bases', 'Basic training')
-          .replace('Analyse des tendances', 'Analysis of trends')
-          .replace('Requêtes SQL avancées', 'Advanced SQL queries')
-          .replace('Analyse de données', 'Data analysis')
-          .replace('Construction et interrogation', 'Building and querying')
-          .replace('Optimisation des données', 'Data optimization')
-          .replace('Création d\'un dashboard', 'Creation of a dashboard')
-          .replace('Automatisation d\'un rapport', 'Automation of a report')
-          .replace('Exploration des ventes', 'Sales exploration')
-          .replace('Dashboard Tableau', 'Tableau dashboard')
-          .replace('Analyse de marché', 'Market analysis')
-          .replace('Détection de faux billets', 'Counterfeit detection')
+        description: englishDescriptions[project.description] || 
+          project.description
+            .replace('Formation sur les bases', 'Basic training')
+            .replace('Analyse des tendances', 'Analysis of trends')
+            .replace('Requêtes SQL avancées', 'Advanced SQL queries')
+            .replace('Analyse de données', 'Data analysis')
+            .replace('Construction et interrogation', 'Building and querying')
+            .replace('Optimisation des données', 'Data optimization')
+            .replace('Création d\'un dashboard', 'Creation of a dashboard')
+            .replace('Automatisation d\'un rapport', 'Automation of a report')
+            .replace('Exploration des ventes', 'Sales exploration')
+            .replace('Dashboard Tableau', 'Tableau dashboard')
+            .replace('Analyse de marché', 'Market analysis')
+            .replace('Détection de faux billets', 'Counterfeit detection')
       };
     }
     return project;
@@ -428,4 +435,3 @@ const Projects = () => {
 };
 
 export default Projects;
-

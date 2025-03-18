@@ -83,6 +83,9 @@ const translations = {
     'projects.counterfeit.title': 'Counterfeit Detection with Python',
     'projects.counterfeit.description': 'Developed a machine learning model to detect counterfeit bills using classification algorithms.',
     'projects.counterfeit.tools': 'Scikit-Learn, Random Forest, K-Means',
+    'projects.aeroworld.title': 'Aeroworld: Aviation Data Analysis Platform',
+    'projects.aeroworld.description': 'Interactive aviation analytics dashboard showing flight patterns, efficiency metrics, and predictive maintenance indicators for airlines.',
+    'projects.aeroworld.tools': 'Python, Power BI, SQL, Machine Learning',
     'projects.tools': 'Tools',
     'projects.viewDetails': 'View Details',
     'projects.viewLess': 'View Less',
@@ -118,6 +121,10 @@ const translations = {
     'contact.cv': 'Download CV',
     'contact.resume_description': 'Download my detailed resume to learn more about my skills, experience, and education.',
     'contact.download_cv': 'Download CV',
+    'contact.email_copied': 'Email copied',
+    'contact.email_copied_description': 'The email address has been copied to your clipboard',
+    'contact.email_copy_error': 'Copy failed',
+    'contact.email_copy_error_description': 'Failed to copy email. Please try again.',
     
     // Footer
     'footer.rights': 'All rights reserved',
@@ -194,6 +201,9 @@ const translations = {
     'projects.counterfeit.title': 'Détection de faux billets avec Python',
     'projects.counterfeit.description': 'Développement d\'un modèle de machine learning pour détecter les faux billets à l\'aide d\'algorithmes de classification.',
     'projects.counterfeit.tools': 'Scikit-Learn, Random Forest, K-Means',
+    'projects.aeroworld.title': 'Aéroworld: Plateforme d\'Analyse de Données Aviation',
+    'projects.aeroworld.description': 'Tableau de bord interactif d\'analyse aéronautique montrant les tendances de vol, les métriques d\'efficacité et les indicateurs de maintenance prédictive pour les compagnies aériennes.',
+    'projects.aeroworld.tools': 'Python, Power BI, SQL, Machine Learning',
     'projects.tools': 'Outils',
     'projects.viewDetails': 'Voir détails',
     'projects.viewLess': 'Voir moins',
@@ -229,6 +239,10 @@ const translations = {
     'contact.cv': 'Télécharger CV',
     'contact.resume_description': 'Téléchargez mon CV détaillé pour en savoir plus sur mes compétences, mon expérience et ma formation.',
     'contact.download_cv': 'Télécharger CV',
+    'contact.email_copied': 'Email copié',
+    'contact.email_copied_description': 'L\'adresse email a été copiée dans votre presse-papiers',
+    'contact.email_copy_error': 'Échec de la copie',
+    'contact.email_copy_error_description': 'Impossible de copier l\'email. Veuillez réessayer.',
     
     // Footer
     'footer.rights': 'Tous droits réservés',
